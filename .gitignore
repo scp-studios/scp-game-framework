@@ -44,3 +44,6 @@ rules.ninja
 
 # Visual Studio Code user specific configuration files
 .vscode/tasks.json
+
+# Build log
+build.log
