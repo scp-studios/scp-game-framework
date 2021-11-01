@@ -24,7 +24,7 @@ target_include_directories("glad" PRIVATE "dependencies/glad/include")
 
 add_library("scp-game-framework-core")
 
-target_include_directories("scp-game-framework-core" PRIVATE "${CMAKE_SOURCE_DIR}/includes")
+target_include_directories("scp-game-framework-core" PRIVATE "${CMAKE_SOURCE_DIR}/include")
 
 add_subdirectory("sources")
 add_subdirectory("include")
