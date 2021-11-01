@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+# CMake clutters
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles/
+
+# Ninja clutters
+build.ninja
+rules.ninja
+.ninja_deps
+.ninja_log
