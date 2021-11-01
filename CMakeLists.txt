@@ -27,3 +27,4 @@ add_library("scp-game-framework-core")
 target_include_directories("scp-game-framework-core" PRIVATE "${CMAKE_SOURCE_DIR}/includes")
 
 add_subdirectory("sources")
+add_subdirectory("include")
