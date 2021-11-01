@@ -18,6 +18,10 @@ else()
     add_compile_options("-Wall" "-pedantic")
 endif()
 
+# GLAD
+add_library("glad" "dependencies/glad/src/glad.c")
+target_include_directories("glad" PRIVATE "dependencies/glad/include")
+
 add_library("scp-game-framework-core")
 
 target_include_directories("scp-game-framework-core" PRIVATE "${CMAKE_SOURCE_DIR}/includes")
