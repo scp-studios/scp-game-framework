@@ -4,4 +4,4 @@ target_sources(
     "hello.cpp"
 )
 
-target_precompile_headers("scp-game-framework-core" "pch.hpp")
+target_precompile_headers("scp-game-framework-core" PRIVATE "pch.hpp")
