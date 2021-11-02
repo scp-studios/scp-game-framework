@@ -12,7 +12,7 @@ namespace scp::graphics
     {
         opengl,
         vulkan
-    }
+    };
 }
 
 #endif /* A5E1BBBD_398C_43EE_9671_837D9AC3FBF4 */
