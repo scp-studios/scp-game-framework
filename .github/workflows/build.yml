@@ -30,8 +30,8 @@ jobs:
     
     - name: Build dependencies that are not provided on Windows
       run: |
-        cmake -B ${{github.workspace}}/build
-        cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+        cmake -S${{github.workspace}}/dependencies/glfw -B ${{github.workspace}}/dependencies/glfw/build
+        cmake --build ${{github.workspace}}/dependencies/glfw/build --config ${{env.BUILD_TYPE}}
       if: matrix.os == 'windows-latest'
 
     - name: Configure CMake
