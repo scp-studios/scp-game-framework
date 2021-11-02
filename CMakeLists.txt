@@ -2,14 +2,14 @@ cmake_minimum_required(VERSION "3.13")
 
 project("scp-game-framework")
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib")
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake-modules")
+
 if (UNIX)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib")
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib")
 elseif(WIN32)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib")
 endif()
 
 if (MSVC)
@@ -17,6 +17,9 @@ if (MSVC)
 else()
     add_compile_options("-Wall" "-pedantic")
 endif()
+
+# GLFW
+find_package("GLFW")
 
 # GLAD
 add_library("glad" "dependencies/glad/src/glad.c")
