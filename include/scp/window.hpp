@@ -25,7 +25,7 @@ namespace scp
         bool is_open();
         
         // Note: This function is specifc to OpenGL
-        void opengl_swap_buffers();
+        void swap_opengl_buffers();
         
         void poll_events();
         
