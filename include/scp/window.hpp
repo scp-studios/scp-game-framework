@@ -18,8 +18,8 @@ namespace scp
     {
     public:
         // Obtain the instance of this class
-        window& get_instance();
-        window& get_instance(uint32_t width, uint32_t height, std::string_view title, bool fullscreen, graphics::api graphics_api = graphics::api::opengl);
+        static window& get_instance();
+        static window& get_instance(uint32_t width, uint32_t height, std::string_view title, bool fullscreen, graphics::api graphics_api = graphics::api::opengl);
         
         void show();
         
