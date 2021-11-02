@@ -18,8 +18,9 @@ else()
     add_compile_options("-Wall" "-pedantic")
 endif()
 
-# GLFW
+# Libraries
 find_package("GLFW")
+find_package("OpenGL")
 
 # GLAD
 add_library("glad" "dependencies/glad/src/glad.c")
@@ -27,7 +28,17 @@ target_include_directories("glad" PRIVATE "dependencies/glad/include")
 
 add_library("scp-game-framework-core")
 
-target_include_directories("scp-game-framework-core" PRIVATE "${CMAKE_SOURCE_DIR}/include")
+target_include_directories(
+    "scp-game-framework-core" PRIVATE 
+    "${CMAKE_SOURCE_DIR}/include"
+    "${GLFW_INCLUDE_DIR}"
+    "dependencies/glad/include"
+)
+
+target_link_libraries(
+    "scp-game-framework-core" PRIVATE
+    "${GLFW_LIBRARY}"
+)
 
 add_subdirectory("sources")
 add_subdirectory("include")
