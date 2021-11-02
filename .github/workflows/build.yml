@@ -25,7 +25,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Install Dependencies
-      run: sudo apt install xorg-dev libglfw-dev
+      run: sudo apt install xorg-dev libglfw3-dev
       if: matrix.os == 'ubuntu-latest'
 
     - name: Configure CMake
