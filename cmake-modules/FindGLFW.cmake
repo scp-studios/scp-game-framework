@@ -12,6 +12,8 @@ if (WIN32)
             NAMES "glfw3.lib" "glfw3dll.lib"
             PATHS "${CMAKE_SOURCE_DIR}/dependencies/glfw/build/Debug/src"
                   "${CMAKE_SOURCE_DIR}/dependencies/glfw/build/Release/src"
+                  "${CMAKE_SOURCE_DIR}/dependencies/glfw/build/src/Debug"
+                  "${CMAKE_SOURCE_DIR}/dependencies/glfw/build/src/Release"
         )
     else()
         find_library(
