@@ -2,7 +2,7 @@
 
 int main(int argc, char** argv)
 {
-    scp::window& window = scp::window::get_instance(1280, 720, "Basic Window Test", true);
+    scp::window& window = scp::window::get_instance(1280, 720, "Basic Window Test", false);
     
     window.show();
     
