@@ -32,7 +32,7 @@ jobs:
     
     - name: Build dependencies that are not provided on Windows
       run: |
-        cmake -S${{github.workspace}}/dependencies/glfw -B ${{github.workspace}}/dependencies/glfw/build
+        cmake -S${{github.workspace}}/dependencies/glfw -B ${{github.workspace}}/dependencies/glfw/build -DGLFW_BUILD_TESTS=false -DGLFW_BUILD_EXAMPLES=false
         cmake --build ${{github.workspace}}/dependencies/glfw/build --config ${{env.BUILD_TYPE}}
       if: matrix.os == 'windows-latest'
 
