@@ -4,6 +4,7 @@
 #include <string_view>
 #include <stdint.h>
 #include <GLFW/glfw3.h>
+#include <scp/graphics/api.hpp>
 
 namespace scp
 {
@@ -18,7 +19,7 @@ namespace scp
     public:
         // Obtain the instance of this class
         window& get_instance();
-        window& get_instance(uint32_t width, uint32_t height, std::string_view title, bool fullscreen);
+        window& get_instance(uint32_t width, uint32_t height, std::string_view title, bool fullscreen, graphics::api graphics_api = graphics::api::opengl);
         
         void show();
         
@@ -37,7 +38,7 @@ namespace scp
     
     private:
         // Constructor is private since this is a singleton class
-        window(uint32_t width, uint32_t height, std::string_view title, bool fullscreen);
+        window(uint32_t width, uint32_t height, std::string_view title, bool fullscreen, scp::graphics::api p_graphics_api);
         
         // Data of the window.
         window_data m_data;
