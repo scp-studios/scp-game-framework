@@ -50,3 +50,4 @@ target_link_libraries(
 
 add_subdirectory("sources")
 add_subdirectory("include")
+add_subdirectory("tests")
