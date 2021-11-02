@@ -2,6 +2,7 @@ target_sources(
     "scp-game-framework-core" PRIVATE
     
     "hello.cpp"
+    "window.cpp"
     "pch.hpp"
 )
 
