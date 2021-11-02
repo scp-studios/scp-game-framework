@@ -11,7 +11,7 @@ static void error_callback(int error_code, const char* message);
 
 window& window::get_instance()
 {
-    get_instance(0, 0, "", false);
+    return get_instance(0, 0, "", false);
 }
 
 
