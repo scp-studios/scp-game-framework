@@ -17,6 +17,9 @@ namespace scp
         // Returns wether the passed key is pressed down or not
         bool is_key_down(int key_code);
         
+        // Returns whether the specified mouse button is pressed down
+        bool is_button_down(int button_code);
+        
         // Returns the total amount that has been scrolled
         uint32_t get_scroll_pos();
         
@@ -43,6 +46,7 @@ namespace scp
         void default_key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
         void default_cursor_pos_callback(GLFWwindow *window, double x_pos, double y_pos);
         void default_scroll_callback(GLFWwindow *window, double xoffset, double yoffset);
+        void default_mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
     }
 }
 

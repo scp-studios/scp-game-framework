@@ -10,6 +10,9 @@ static double scroll_pos = 0;
 // The state of every key (either pressed or not pressed)
 static std::vector<bool> keys(GLFW_KEY_LAST);
 
+// The state of every mouse button (either clicked or not clicked)
+static std::vector<bool> mouse_buttons(GLFW_MOUSE_BUTTON_LAST);
+
 // The position of the mouse cursor.
 static scp::input::mouse_position mouse_position_var = { 0, 0 };
 
@@ -19,6 +22,14 @@ static scp::input::mouse_position mouse_position_var = { 0, 0 };
 bool scp::input::is_key_down(int p_key_code)
 {
     return keys[p_key_code];
+}
+
+
+
+
+bool scp::input::is_button_down(int p_button_code)
+{
+    return mouse_buttons[p_button_code];
 }
 
 
@@ -122,4 +133,18 @@ void scp::input::default_cursor_pos_callback(GLFWwindow* p_window, double p_x_po
 void scp::input::default_scroll_callback(GLFWwindow* p_window, double xoffset, double yoffset)
 {
     scroll_pos = yoffset;
+}
+
+
+
+
+void scp::input::default_mouse_button_callback(GLFWwindow* p_window, int p_button, int p_action, int p_mods)
+{
+    if (p_action == GLFW_PRESS)
+    {
+        mouse_buttons[p_button] = true;
+    } else if (p_action == GLFW_RELEASE)
+    {
+        mouse_buttons[p_button] = false;
+    }
 }
