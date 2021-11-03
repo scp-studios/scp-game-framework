@@ -27,13 +27,16 @@ namespace scp
         // Returns the mouse position of the mouse pointer
         mouse_position get_mouse_position();
         
-        // Set the key callback
+        // Set the key callback. Uses the default callback function if
+        // callback is equal to nullptr.
         void set_key_callback(GLFWkeyfun callback);
         
-        // Set the mouse position callback
+        // Set the mouse position callback. Uses the default callback function if
+        // callback is equal to nullptr.
         void set_mouse_pos_callback(GLFWcursorposfun callback);
         
-        // Set the mouse scroll callback
+        // Set the mouse scroll callback. Uses the default callback function if
+        // callback is equal to nullptr.
         void set_scroll_callback(GLFWscrollfun callback);
     }
 }
