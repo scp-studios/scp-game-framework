@@ -41,9 +41,7 @@ namespace scp
         
         // The default input callbacks
         void default_key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
-
         void default_cursor_pos_callback(GLFWwindow *window, double x_pos, double y_pos);
-
         void default_scroll_callback(GLFWwindow *window, double xoffset, double yoffset);
     }
 }
