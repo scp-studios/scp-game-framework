@@ -3,11 +3,15 @@
 
 #include <string_view>
 #include <stdint.h>
+
 #include <GLFW/glfw3.h>
+
 #include <scp/graphics/api.hpp>
+#include <scp/input.hpp>
 
 namespace scp
 {
+    
     struct window_data
     {
         uint32_t m_width;
@@ -16,6 +20,16 @@ namespace scp
     
     class window
     {
+        // Input friend functions
+        friend bool input::is_key_down(int key_code);
+        friend uint32_t input::get_scroll_pos();
+        friend uint32_t input::get_mouse_x();
+        friend uint32_t input::get_mouse_y();
+        friend input::mouse_position input::get_mouse_position();
+        friend void input::set_key_callback(GLFWkeyfun callback);
+        friend void input::set_mouse_pos_callback(GLFWcursorposfun callback);
+        friend void input::set_scroll_callback(GLFWscrollfun callback);
+        
     public:
         // Obtain the instance of this class
         static window& get_instance();
