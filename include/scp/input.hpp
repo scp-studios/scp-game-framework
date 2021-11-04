@@ -21,7 +21,7 @@ namespace scp
         bool is_button_down(int button_code);
         
         // Returns the total amount that has been scrolled
-        uint32_t get_scroll_pos();
+        double get_scroll_pos();
         
         // Returns the x and y position of the mouse position
         uint32_t get_mouse_x();

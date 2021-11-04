@@ -35,7 +35,7 @@ bool scp::input::is_button_down(int p_button_code)
 
 
 
-uint32_t scp::input::get_scroll_pos()
+double scp::input::get_scroll_pos()
 {
     return scroll_pos;
 }
@@ -154,7 +154,7 @@ void scp::input::default_cursor_pos_callback(GLFWwindow* p_window, double p_x_po
 
 void scp::input::default_scroll_callback(GLFWwindow* p_window, double xoffset, double yoffset)
 {
-    scroll_pos = yoffset;
+    scroll_pos += yoffset;
 }
 
 

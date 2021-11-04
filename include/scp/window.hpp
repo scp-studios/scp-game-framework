@@ -22,7 +22,7 @@ namespace scp
     {
         // Input friend functions
         friend bool input::is_key_down(int key_code);
-        friend uint32_t input::get_scroll_pos();
+        friend double input::get_scroll_pos();
         friend uint32_t input::get_mouse_x();
         friend uint32_t input::get_mouse_y();
         friend input::mouse_position input::get_mouse_position();
