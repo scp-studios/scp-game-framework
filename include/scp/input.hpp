@@ -42,6 +42,10 @@ namespace scp
         // callback is equal to nullptr.
         void set_scroll_callback(GLFWscrollfun callback);
         
+        // Set the mouse click callback. Uses the default callback function if
+        // callback is equal to nullptr.
+        void set_mouse_button_callback(GLFWmousebuttonfun callback);
+        
         // The default input callbacks
         void default_key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
         void default_cursor_pos_callback(GLFWwindow *window, double x_pos, double y_pos);

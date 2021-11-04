@@ -107,6 +107,20 @@ void scp::input::set_scroll_callback(GLFWscrollfun p_callback)
 
 
 
+void scp::input::set_mouse_button_callback(GLFWmousebuttonfun p_callback)
+{
+    if (p_callback != nullptr)
+    {
+        glfwSetMouseButtonCallback(THE_THING);
+    } else
+    {
+        glfwSetMouseButtonCallback(THE_WINDOW_HANDLE, default_mouse_button_callback);
+    }
+}
+
+
+
+
 void scp::input::default_key_callback(GLFWwindow* p_window, int p_key, int p_scancode, int p_action, int p_mods)
 {
     if (p_action == GLFW_PRESS)
