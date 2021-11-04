@@ -43,6 +43,14 @@ uint32_t scp::input::get_scroll_pos()
 
 
 
+scp::input::mouse_position scp::input::get_mouse_position()
+{
+    return mouse_position_var;
+}
+
+
+
+
 uint32_t scp::input::get_mouse_x()
 {
     return mouse_position_var.x;
