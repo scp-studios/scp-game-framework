@@ -29,6 +29,7 @@ namespace scp
         friend void input::set_key_callback(GLFWkeyfun callback);
         friend void input::set_mouse_pos_callback(GLFWcursorposfun callback);
         friend void input::set_scroll_callback(GLFWscrollfun callback);
+        friend void input::set_mouse_button_callback(GLFWmousebuttonfun callback);
         
     public:
         // Obtain the instance of this class
