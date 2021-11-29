@@ -1,1 +1,0 @@
-add_subdirectory("scp-game-framework-core")

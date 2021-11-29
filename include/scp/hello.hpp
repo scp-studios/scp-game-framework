@@ -1,9 +1,0 @@
-#ifndef A9C6C50F_FC3D_4608_A79E_9D781D0BC2AC
-#define A9C6C50F_FC3D_4608_A79E_9D781D0BC2AC
-
-namespace scp
-{
-    void say_hello();
-}
-
-#endif /* A9C6C50F_FC3D_4608_A79E_9D781D0BC2AC */
