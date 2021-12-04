@@ -26,4 +26,4 @@ endif()
 #find_package(OpenGL)
 
 add_library(scp-game-framework-core)
-add_subdirectory(core)
+add_subdirectory(src)
