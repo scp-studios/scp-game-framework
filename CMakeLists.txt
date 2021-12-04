@@ -12,6 +12,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_CXX_STANDARD 17)
 
+if (UNIX AND NOT APPLE)
+    set(CMAKE_EXECUTABLE_SUFFIX .out)
+endif()
+
 option(BUILD_SHARED_LIBS "Whether or not to build DLLs/shared objects instead of static libraries" ON)
 
 if (MSVC)
