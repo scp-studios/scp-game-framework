@@ -29,7 +29,10 @@ endif()
 #find_package(GLFW)
 #find_package(OpenGL)
 
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
 add_library(scp-game-framework-core)
 
 add_subdirectory(src)
+add_subdirectory(include)
 add_subdirectory(tests)
