@@ -1,10 +1,19 @@
+# The build directory
 /build/
+
+# Libraries
 *.so
 *.dll
+*.a
+*.dylib
 
+# Executables
 *.out
 *.exe
+*.app
 
+# Visual Studio Clutters
 *.pdb
 
+# Visual Studio Code user specific configuration files
 .vscode/
