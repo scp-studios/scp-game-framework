@@ -35,10 +35,10 @@ else()
     else()
         find_library(
             GLFW_LIBRARY
-            NAMES libglfw3.a libglfw.so.3
-            PATHS ${CMAKE_SOURCE_DIR}/deps/glfw/build/src
+            NAMES libglfw.so.3 libglfw3.a
+            PATHS /usr/lib/x86_64-linux-gnu
                   ${CMAKE_SOURCE_DIR}/deps/glfw/build/src
-                  /usr/lib/x86_64-linux-gnu
+                  ${CMAKE_SOURCE_DIR}/deps/glfw/build/src
         )
     endif()
 endif()

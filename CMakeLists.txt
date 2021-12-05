@@ -18,7 +18,7 @@ if (UNIX AND NOT APPLE)
     set(CMAKE_EXECUTABLE_SUFFIX .out)
 endif()
 
-option(BUILD_SHARED_LIBS "Whether or not to build DLLs/shared objects instead of static libraries" ON)
+option(BUILD_SHARED_LIBS "Whether or not to build DLLs/shared objects instead of static libraries" OFF)
 
 if (MSVC)
     add_compile_options(/Wall)
