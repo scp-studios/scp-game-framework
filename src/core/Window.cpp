@@ -27,6 +27,8 @@ m_graphicsAPI(p_graphicsAPI)
         throw std::runtime_error("Failed to initialize GLFW.");
     }
     
+    glfwSetErrorCallback(errorCallback);
+    
     if (p_graphicsAPI == API::OpenGL)
     {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -43,11 +45,11 @@ m_graphicsAPI(p_graphicsAPI)
     {
         m_width = videoMode->width;
     } 
-    else if (m_width == HALF_SCREEN_SIZE)
+    else if (p_width == HALF_SCREEN_SIZE)
     {
         m_width = videoMode->width / 2;
     }
-    else if (m_width == SCREEN_SIZE_TIMES_66_PERCENT)
+    else if (p_width == SCREEN_SIZE_TIMES_66_PERCENT)
     {
         m_width = videoMode->width * 0.666666666666666666666666666667;
     }
