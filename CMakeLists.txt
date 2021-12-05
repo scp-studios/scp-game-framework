@@ -8,6 +8,8 @@ else()
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 endif()
 
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_CXX_STANDARD 17)
@@ -25,13 +27,14 @@ else()
     add_compile_options(-Wall -Wextra -pedantic)
 endif()
 
-# I'll add these later
-#find_package(GLFW)
-#find_package(OpenGL)
+find_package(GLFW)
+find_package(OpenGL)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 add_library(scp-game-framework-core)
+
+target_link_libraries(scp-game-framework-core GLFW::GLFW)
 
 add_subdirectory(src)
 add_subdirectory(include)
