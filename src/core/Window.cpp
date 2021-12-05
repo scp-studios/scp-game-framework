@@ -91,6 +91,8 @@ m_graphicsAPI(p_graphicsAPI)
         throw std::runtime_error("Failed to create the window.");
     }
     
+    glfwSetWindowPos(m_window, (videoMode->width - m_width) / 2, (videoMode->height - m_height) / 2);
+    
     if (p_graphicsAPI == API::OpenGL)
     {
         glfwMakeContextCurrent(m_window);
