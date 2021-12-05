@@ -30,7 +30,7 @@ endif()
 find_package(GLFW)
 find_package(OpenGL)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/include ${GLFW_INCLUDE_DIR})
 
 add_library(scp-game-framework-core)
 
