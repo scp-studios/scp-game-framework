@@ -1,4 +1,4 @@
 void superIdolDeXiaoRongDoMeiNiDeTian()
 {
-    
+    return;
 }
