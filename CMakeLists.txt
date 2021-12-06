@@ -33,6 +33,7 @@ find_package(OpenGL)
 include_directories(${CMAKE_SOURCE_DIR}/include ${GLFW_INCLUDE_DIR})
 
 add_library(scp-game-framework-core)
+add_library(scp-game-framework-graphics)
 
 target_link_libraries(scp-game-framework-core GLFW::GLFW)
 
