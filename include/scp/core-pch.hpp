@@ -4,5 +4,6 @@
 #include <cstdint>
 #include <string_view>
 #include <iostream>
+#include <memory>
 
 #endif /* EF9E1FC6_81B7_4747_B5DB_13E7A798B2AE */
