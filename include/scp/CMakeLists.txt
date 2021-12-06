@@ -3,6 +3,7 @@ target_sources(
     
     core-pch.hpp
     dummy-header.hpp
+    Scene.hpp
     Window.hpp
 )
 
