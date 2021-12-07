@@ -19,7 +19,7 @@ namespace scp
         
         // Templated version
         template<typename SceneType, typename... ArgTypes>
-        void setActive(ArgTypes... args)
+        static void setActive(ArgTypes... args)
         {
             if (activeScene != nullptr)
             {
