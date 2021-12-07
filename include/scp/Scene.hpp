@@ -14,6 +14,9 @@ namespace scp
     class Scene
     {
     public:
+        // The window has to be a friend class in order for it to pass events
+        friend class Window;
+        
         // Default Constructor. It will serve as the "onCreate" function
         Scene() = default;
         

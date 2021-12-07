@@ -1,4 +1,8 @@
 #include <stdexcept>
+#include <glad/glad.h>
+
+#include <scp/Scene.hpp>
+#include <scp/events.hpp>
 
 #include <scp/Window.hpp>
 
@@ -91,12 +95,25 @@ m_graphicsAPI(p_graphicsAPI)
         throw std::runtime_error("Failed to create the window.");
     }
     
+    glfwSetWindowUserPointer(m_window, this);
+    
     glfwSetWindowPos(m_window, (videoMode->width - m_width) / 2, (videoMode->height - m_height) / 2);
     
     if (p_graphicsAPI == API::OpenGL)
     {
         glfwMakeContextCurrent(m_window);
+        
+        if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
+        {
+            throw std::runtime_error("Failed to initialize GLAD.");
+        }
     }
+    
+    glfwSetFramebufferSizeCallback(m_window, framebufferSizeCallback);
+    glfwSetKeyCallback(m_window, keyCallback);
+    glfwSetMouseButtonCallback(m_window, mouseButtonCallback);
+    glfwSetCursorPosCallback(m_window, mousePosCallback);
+    glfwSetScrollCallback(m_window, scrollCallback);
 }
 
 
@@ -108,7 +125,7 @@ m_graphicsAPI(p_graphicsAPI)
 
 
 
-void Window::show()
+void Window::show() const
 {
     glfwShowWindow(m_window);
 }
@@ -122,7 +139,7 @@ void Window::show()
 
 
 
-bool Window::isOpen()
+bool Window::isOpen() const
 {
     return !glfwWindowShouldClose(m_window);
 }
@@ -136,7 +153,7 @@ bool Window::isOpen()
 
 
 
-uint32_t Window::getWidth()
+uint32_t Window::getWidth() const
 {
     return m_width;
 }
@@ -150,7 +167,7 @@ uint32_t Window::getWidth()
 
 
 
-uint32_t Window::getHeight()
+uint32_t Window::getHeight() const
 {
     return m_height;
 }
@@ -164,7 +181,7 @@ uint32_t Window::getHeight()
 
 
 
-void Window::update()
+void Window::update() const
 {
     if (m_graphicsAPI == API::OpenGL)
     {
@@ -186,4 +203,100 @@ void Window::update()
 Window::~Window()
 {
     glfwDestroyWindow(m_window);
+}
+
+
+
+
+
+
+
+
+
+
+void Window::keyCallback(GLFWwindow* p_window, int p_keycode, int p_scancode, int p_action, int p_mods)
+{
+    events::KeyPressEvent event = {};
+    event.m_key = p_keycode;
+    event.m_scancode = p_scancode;
+    event.m_action = p_action;
+    event.m_mods = p_mods;
+    
+    Scene::activeScene->onKeyPress(event);
+}
+
+
+
+
+
+
+
+
+
+
+void Window::mouseButtonCallback(GLFWwindow* p_window, int p_button, int p_action, int p_mods)
+{
+    events::MouseButtonEvent event = {};
+    event.m_button = p_button;
+    event.m_action = p_action;
+    event.m_mods = p_mods;
+    
+    Scene::activeScene->onMouseClick(event);
+}
+
+
+
+
+
+
+
+
+
+
+void Window::mousePosCallback(GLFWwindow* p_window, double p_x, double p_y)
+{
+    events::MouseMoveEvent event = {};
+    event.m_x = p_x;
+    event.m_y = p_y;
+    
+    Scene::activeScene->onMouseMove(event);
+}
+
+
+
+
+
+
+
+
+
+
+void Window::scrollCallback(GLFWwindow* p_window, double p_xoffset, double p_yoffset)
+{
+    events::MouseScrollEvent event = {};
+    event.m_xoffset = p_xoffset;
+    event.m_yoffset = p_yoffset;
+    
+    Scene::activeScene->onMouseScroll(event);
+}
+
+
+
+
+
+
+
+
+
+
+void Window::framebufferSizeCallback(GLFWwindow* p_window, int p_width, int p_height)
+{
+    Window* window = reinterpret_cast<Window*>(glfwGetWindowUserPointer(p_window));
+    window->m_width = p_width;
+    window->m_height = p_height;
+    
+    if (window->m_graphicsAPI == graphics::API::OpenGL)
+    {
+        glViewport(0, 0, p_width, p_height);
+    }
 }

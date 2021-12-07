@@ -23,17 +23,17 @@ namespace scp
         );
         
         // Show the window
-        void show();
+        void show() const;
         
         // Is the window still open?
-        bool isOpen();
+        bool isOpen() const;
         
         // Get the window's width and height
-        uint32_t getWidth();
-        uint32_t getHeight();
+        uint32_t getWidth() const;
+        uint32_t getHeight() const;
         
         // Update the window
-        void update();
+        void update() const;
         
         // Destructor
         ~Window();
@@ -54,7 +54,14 @@ namespace scp
         uint32_t m_width;
         uint32_t m_height;
         
-        // TODO: Add event callbacks
+        // The event callbacks
+        static void keyCallback(GLFWwindow* window, int keycode, int scancode, int action, int mods);
+        static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
+        static void mousePosCallback(GLFWwindow* window, double x, double y);
+        static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
+        
+        // The window resize callback
+        static void framebufferSizeCallback(GLFWwindow* window, int width, int height);
     };
 }
 
