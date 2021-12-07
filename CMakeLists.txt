@@ -30,12 +30,14 @@ endif()
 find_package(GLFW)
 find_package(OpenGL)
 
-include_directories(${CMAKE_SOURCE_DIR}/include ${GLFW_INCLUDE_DIR})
+add_library(glad deps/GLAD/src/glad.c)
+
+include_directories(${CMAKE_SOURCE_DIR}/include ${GLFW_INCLUDE_DIR} ${CMAKE_SOURCE_DIR}/deps/GLAD/include)
 
 add_library(scp-game-framework-core)
 add_library(scp-game-framework-graphics)
 
-target_link_libraries(scp-game-framework-core GLFW::GLFW)
+target_link_libraries(scp-game-framework-core GLFW::GLFW glad)
 
 add_subdirectory(src)
 add_subdirectory(include)
