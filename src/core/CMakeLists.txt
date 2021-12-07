@@ -1,7 +1,6 @@
 target_sources(
     scp-game-framework-core PRIVATE
     
-    dummy-source.cpp
     Scene.cpp
     Window.cpp
 )
