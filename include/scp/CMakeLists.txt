@@ -2,6 +2,7 @@ target_sources(
     scp-game-framework-core PRIVATE
     
     core-pch.hpp
+    events.hpp
     Scene.hpp
     Window.hpp
 )

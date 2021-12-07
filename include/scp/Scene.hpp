@@ -7,6 +7,8 @@
 
 #include <scp/core-pch.hpp>
 
+#include <scp/events.hpp>
+
 namespace scp
 {
     class Scene
@@ -37,11 +39,11 @@ namespace scp
         // Rendering
         virtual void render();
         
-        // Input Events. Commented out for now because I don't have them.
-        // virtual void onKeyPress(KeyPressEvent event);
-        // virtual void onMouseClick(MouseButtonEvent event);
-        // virtual void onMouseMove(MouseMoveEvent event);
-        // virtual void onMouseScroll(MouseScrollEvent event);
+        // Events
+        virtual void onKeyPress(events::KeyPressEvent& event);
+        virtual void onMouseClick(events::MouseButtonEvent& event);
+        virtual void onMouseMove(events::MouseMoveEvent& event);
+        virtual void onMouseScroll(events::MouseScrollEvent& event);
         
         // The currently active scene
         static Scene* activeScene;
