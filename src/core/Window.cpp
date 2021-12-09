@@ -277,6 +277,11 @@ void Window::scrollCallback(GLFWwindow* p_window, double p_xoffset, double p_yof
     event.m_xoffset = p_xoffset;
     event.m_yoffset = p_yoffset;
     
+    Window* windowObject = reinterpret_cast<Window*>(glfwGetWindowUserPointer(p_window));
+    
+    windowObject->m_totalScrollAmountX += p_xoffset;
+    windowObject->m_totalScrollAmountY += p_yoffset;
+    
     Scene::activeScene->onMouseScroll(event);
 }
 

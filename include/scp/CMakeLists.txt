@@ -3,6 +3,7 @@ target_sources(
     
     core-pch.hpp
     events.hpp
+    Input.hpp
     Scene.hpp
     Window.hpp
 )

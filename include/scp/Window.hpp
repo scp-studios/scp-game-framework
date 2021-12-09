@@ -13,6 +13,10 @@ namespace scp
     class Window
     {
     public:
+        // The input class is a friend because it needs to access the private
+        // window handle
+        friend class Input;
+        
         // Constructor
         Window(
             int32_t width = SCREEN_SIZE_TIMES_66_PERCENT, 
@@ -53,6 +57,11 @@ namespace scp
         // The window's width and height
         uint32_t m_width;
         uint32_t m_height;
+        
+        // The total amount that has been scrolled (Needs to be stored here
+        // because GLFW doesn't have scroll polling functions)
+        double m_totalScrollAmountX;
+        double m_totalScrollAmountY;
         
         // The event callbacks
         static void keyCallback(GLFWwindow* window, int keycode, int scancode, int action, int mods);
