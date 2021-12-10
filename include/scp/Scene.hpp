@@ -32,6 +32,12 @@ namespace scp
             activeScene = new SceneType(args...);
         }
         
+        // Update the active scene
+        static void updateActive();
+        
+        // Render the active scene
+        static void renderActive();
+        
         // Destructor. It will serve as the "onDestroy" function.
         virtual ~Scene() = default;
         

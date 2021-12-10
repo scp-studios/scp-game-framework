@@ -9,6 +9,34 @@ using scp::events::MouseButtonEvent;
 using scp::events::MouseMoveEvent;
 using scp::events::MouseScrollEvent;
 
+void Scene::updateActive()
+{
+    activeScene->onUpdate();
+}
+
+
+
+
+
+
+
+
+
+
+void Scene::renderActive()
+{
+    activeScene->render();
+}
+
+
+
+
+
+
+
+
+
+
 void Scene::onUpdate()
 {
     
