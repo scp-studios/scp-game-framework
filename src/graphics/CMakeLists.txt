@@ -4,3 +4,5 @@ target_sources(
     dummy-source.cpp
     opengl.cpp
 )
+
+add_subdirectory(opengl)
