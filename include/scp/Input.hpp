@@ -19,8 +19,11 @@ namespace scp
     class Input
     {
     public:
-        // Constructor
-        Input(Window& window);
+        // Deleted the constructors so that copies can't be made.
+        Input(Input&) = delete;
+        Input(Input&&) = delete;
+        
+        static Input& getInstance();
         
         // Is the key down?
         bool isKeyDown(int keycode) const;
@@ -40,6 +43,9 @@ namespace scp
         double getScrollY() const;
         
     private:
+        // Constructor
+        Input();
+        
         // The window that the class is polling input from
         Window& m_window;
     };

@@ -5,7 +5,22 @@
 using scp::Window;
 using scp::Input;
 
-Input::Input(Window& p_window): m_window(p_window)
+Input& Input::getInstance()
+{
+    static Input input;
+    return input;
+}
+
+
+
+
+
+
+
+
+
+
+Input::Input(): m_window(Window::getInstance())
 {
     
 }

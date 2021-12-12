@@ -52,13 +52,15 @@ class Application
 public:
     Application()
     {
+        window = &Window::getInstance();
+        
         Scene::setActive<MyScene>();
         
-        window.show();
+        window->show();
         
-        while (window.isOpen())
+        while (window->isOpen())
         {
-            window.update();
+            window->update();
         }
     }
     
@@ -68,7 +70,7 @@ public:
     }
     
 private:
-    Window window;
+    Window* window;
 };
 
 int main()

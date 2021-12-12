@@ -17,14 +17,19 @@ namespace scp
         // window handle
         friend class Input;
         
-        // Constructor
-        Window(
+        // The get instance thingy
+        static Window& getInstance(
             int32_t width = SCREEN_SIZE_TIMES_66_PERCENT, 
             int32_t height = SCREEN_SIZE_TIMES_66_PERCENT, 
             std::string_view title = "SCP Game Framework Window", 
             bool fullscreen = false, 
             graphics::API api = graphics::API::OpenGL
         );
+        
+        // Delete these constructors, since we don't want to be able to create
+        // a copy of a Window
+        Window(Window& src) = delete;
+        Window(Window&&) = delete;
         
         // Show the window
         void show() const;
@@ -48,6 +53,15 @@ namespace scp
         static const int32_t SCREEN_SIZE_TIMES_66_PERCENT = -3;
         
     private:
+        // Constructor
+        Window(
+            int32_t width, 
+            int32_t height, 
+            std::string_view, 
+            bool fullscreen,
+            graphics::API api
+        );
+        
         // The handle to the GLFW window
         GLFWwindow* m_window;
         

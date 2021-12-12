@@ -23,6 +23,25 @@ static void errorCallback(int p_code, const char* p_message)
 
 
 
+Window& Window::getInstance(int32_t p_width, 
+            int32_t p_height, 
+            std::string_view p_title, 
+            bool p_fullscreen,
+            graphics::API p_api)
+{
+    static Window window(p_width, p_height, p_title, p_fullscreen, p_api);
+    return window;
+}
+
+
+
+
+
+
+
+
+
+
 Window::Window(int32_t p_width, int32_t p_height, std::string_view p_title, bool p_fullscreen, API p_graphicsAPI):
 m_graphicsAPI(p_graphicsAPI)
 {

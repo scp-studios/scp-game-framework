@@ -4,20 +4,24 @@
 
 using scp::Input;
 using scp::Scene;
+using scp::Window;
 
 class MyScene: public scp::Scene
 {
 public:
-    MyScene(Input& p_input): input(p_input)
+    MyScene(): input(Input::getInstance())
     {
         
     }
     
     void onUpdate() override
     {
-        if (input.isKeyDown(GLFW_KEY_F))
+        if (input.isKeyDown(GLFW_KEY_K))
         {
-            std::cout << "Yes!" << std::endl;
+            std::cout << "Yes." << std::endl;
+        } else
+        {
+            std::cout << "No." << std::endl;
         }
         
         scp::MousePosition mousePos = input.getMousePosition();
@@ -30,9 +34,7 @@ public:
         
         std::cout << "Scroll thingy: " << input.getScrollY() << std::endl;
     }
-    
 private:
-    // Not the best way to do things, but, hey, this is just a test.
     Input& input;
 };
 
@@ -40,9 +42,11 @@ private:
 class Application
 {
 public:
-    Application(): input(window)
+    Application()
     {
-        scp::Scene::setActive<MyScene>(input);
+        Window& window = Window::getInstance();
+        
+        scp::Scene::setActive<MyScene>();
         
         window.show();
         
@@ -54,15 +58,6 @@ public:
             window.update();
         }
     }
-    
-    ~Application()
-    {
-        
-    }
-private:
-    scp::Window window;
-    
-    scp::Input input;
 };
 
 
