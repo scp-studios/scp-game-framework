@@ -1,6 +1,8 @@
 #ifndef A4D7CCDE_7F39_4707_926A_1265CF37A983
 #define A4D7CCDE_7F39_4707_926A_1265CF37A983
 
+#include <scp/graphics/pch.hpp>
+
 namespace scp::graphics::opengl
 {
     // A simple shader class. It works with OpenGL. Mainly
@@ -15,7 +17,7 @@ namespace scp::graphics::opengl
         Shader(std::string_view source);
         
         // Create a shader from multiple sources
-        Shader(std::string_view vertexSource, std::string_view fragmentSource, std::string_view geometrySource = "", std::string_view name);
+        Shader(std::string_view vertexSource, std::string_view fragmentSource, std::string_view geometrySource = "", std::string_view name = "shader program");
         
         // Shaders aren't really copiable.
         Shader(Shader&) = delete;
@@ -55,7 +57,7 @@ namespace scp::graphics::opengl
         
         // The handle to the actual shader object in OpenGL
         unsigned int m_shader;
-    }
+    };
 }
 
 #endif /* A4D7CCDE_7F39_4707_926A_1265CF37A983 */
