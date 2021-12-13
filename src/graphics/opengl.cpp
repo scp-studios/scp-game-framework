@@ -98,5 +98,5 @@ void scp::graphics::opengl::enableContextDebugging()
     glEnable(GL_DEBUG_OUTPUT);
     glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
     
-    glDebugMessageCallback(nullptr, nullptr);
+    glDebugMessageCallback(openGLDebugCallback, nullptr);
 }
