@@ -1,3 +1,3 @@
 # Code of Conduct
 
-None for now lol.
+Do whatever you want here bozo.
