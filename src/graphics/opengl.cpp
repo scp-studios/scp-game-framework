@@ -90,7 +90,7 @@ static void openGLDebugCallback(GLenum p_source, GLenum p_type, GLuint p_id, GLe
         severity = "NOTIFICATION";
     }
     
-    *(output) << "[OPENGL]: (Source: " << source << ", Type: " << type << ", Severity: " << severity << "): " << p_message << std::endl;
+    *(output) << "[OPENGL]: (Src: " << source << ", T: " << type << ", Sev: " << severity << "): " << p_message << std::endl;
 }
 
 void scp::graphics::opengl::enableContextDebugging()
