@@ -6,6 +6,8 @@
 
 #include <scp/Window.hpp>
 
+#include <scp/graphics/opengl.hpp>
+
 using scp::Window;
 using scp::graphics::API;
 
@@ -27,9 +29,10 @@ Window& Window::getInstance(int32_t p_width,
             int32_t p_height, 
             std::string_view p_title, 
             bool p_fullscreen,
-            graphics::API p_api)
+            graphics::API p_api,
+            bool p_debugging)
 {
-    static Window window(p_width, p_height, p_title, p_fullscreen, p_api);
+    static Window window(p_width, p_height, p_title, p_fullscreen, p_api, p_debugging);
     return window;
 }
 
@@ -42,7 +45,7 @@ Window& Window::getInstance(int32_t p_width,
 
 
 
-Window::Window(int32_t p_width, int32_t p_height, std::string_view p_title, bool p_fullscreen, API p_graphicsAPI):
+Window::Window(int32_t p_width, int32_t p_height, std::string_view p_title, bool p_fullscreen, API p_graphicsAPI, bool p_debugging):
 m_graphicsAPI(p_graphicsAPI)
 {
     if (!glfwInit())
@@ -57,6 +60,11 @@ m_graphicsAPI(p_graphicsAPI)
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        
+        if (p_debugging)
+        {
+            glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+        }
     }
     
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
@@ -118,6 +126,7 @@ m_graphicsAPI(p_graphicsAPI)
     
     glfwSetWindowPos(m_window, (videoMode->width - m_width) / 2, (videoMode->height - m_height) / 2);
     
+    // Perform OpenGL specific operations
     if (p_graphicsAPI == API::OpenGL)
     {
         glfwMakeContextCurrent(m_window);
@@ -125,6 +134,11 @@ m_graphicsAPI(p_graphicsAPI)
         if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
         {
             throw std::runtime_error("Failed to initialize GLAD.");
+        }
+        
+        if (p_debugging)
+        {
+            graphics::opengl::enableContextDebugging();
         }
     }
     

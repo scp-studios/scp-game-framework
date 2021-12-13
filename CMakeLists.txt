@@ -41,7 +41,14 @@ include_directories(${CMAKE_SOURCE_DIR}/include ${GLFW_INCLUDE_DIR} ${CMAKE_SOUR
 add_library(scp-game-framework-core)
 add_library(scp-game-framework-graphics)
 
-target_link_libraries(scp-game-framework-core GLFW::GLFW glad pthread)
+target_link_libraries(scp-game-framework-core GLFW::GLFW glad scp-game-framework-graphics)
+
+if (UNIX)
+    # Unix stuff
+    target_link_libraries(scp-game-framework-core pthread)
+elseif(WIN32)
+    # WIN32 related stuff
+endif()
 
 add_subdirectory(src)
 add_subdirectory(include)

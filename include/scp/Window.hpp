@@ -23,7 +23,8 @@ namespace scp
             int32_t height = SCREEN_SIZE_TIMES_66_PERCENT, 
             std::string_view title = "SCP Game Framework Window", 
             bool fullscreen = false, 
-            graphics::API api = graphics::API::OpenGL
+            graphics::API api = graphics::API::OpenGL,
+            bool debugging = false
         );
         
         // Delete these constructors, since we don't want to be able to create
@@ -59,7 +60,8 @@ namespace scp
             int32_t height, 
             std::string_view, 
             bool fullscreen,
-            graphics::API api
+            graphics::API api,
+            bool debugging
         );
         
         // The handle to the GLFW window
