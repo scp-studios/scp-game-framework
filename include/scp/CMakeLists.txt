@@ -11,3 +11,4 @@ target_sources(
 target_precompile_headers(scp-game-framework-core PRIVATE core-pch.hpp)
 
 add_subdirectory(graphics)
+add_subdirectory(utils)
