@@ -3,6 +3,7 @@ target_sources(
     
     file-utils.hpp
     pch.hpp
+    string_utils.hpp
 )
 
 target_precompile_headers(scp-game-framework-utils PRIVATE pch.hpp)
