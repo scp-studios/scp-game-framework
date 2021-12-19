@@ -41,6 +41,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include ${GLFW_INCLUDE_DIR} ${CMAKE_SOUR
 add_library(scp-game-framework-core)
 add_library(scp-game-framework-graphics)
 add_library(scp-game-framework-utils)
+add_library(scp-game-framework-math)
 
 target_link_libraries(scp-game-framework-core GLFW::GLFW glad scp-game-framework-graphics)
 target_link_libraries(scp-game-framework-graphics glad scp-game-framework-utils)
