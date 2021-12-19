@@ -20,7 +20,7 @@ namespace scp::math
             
         }
         
-        Vector2(T p_x, T p_y): m_x(p_x), m_y(p_y)
+        Vector2(T p_x, T p_y): x(p_x), y(p_y)
         {
             
         }
@@ -28,8 +28,8 @@ namespace scp::math
         // More stuff coming soon
         // ...
         
-        T m_x;
-        T m_y;
+        T x;
+        T y;
     };
 }
 
