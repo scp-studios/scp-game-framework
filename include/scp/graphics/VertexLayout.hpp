@@ -15,6 +15,7 @@ namespace scp::graphics
         Type type;
         uint16_t stride;
         uint16_t offset;
+        uint8_t size;
     };
 }
 
