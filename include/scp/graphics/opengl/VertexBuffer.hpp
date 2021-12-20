@@ -51,8 +51,20 @@ namespace scp::graphics::opengl
             unbind();
         }
         
+        // Swap two vertex buffers
+        static void swap(VertexBuffer& a, VertexBuffer& b);
+        
+        // Destructor
+        ~VertexBuffer();
+        
     private:
         unsigned int m_handle;
+        
+        // Move ownership from another vertex buffer
+        void moveFrom(VertexBuffer& src);
+        
+        // Destroy this buffer
+        void destroy();
     };
 }
 
