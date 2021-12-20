@@ -7,7 +7,7 @@ namespace scp::graphics
 {
     struct VertexLayout
     {
-        enum Type
+        enum class Type
         {
             Int, UnsignedInt, Float, Double
         };
