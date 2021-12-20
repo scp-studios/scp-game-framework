@@ -19,9 +19,10 @@ std::string file_utils::loadAsString(std::string_view path)
     {
         while (file)
         {
-            char character = ' ';
-            file >> character;
-            fileContent << character;
+            std::string line;
+            std::getline(file, line);
+            
+            fileContent << line << "\n";
         }
     }
     
