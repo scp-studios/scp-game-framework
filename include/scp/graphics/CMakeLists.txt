@@ -3,6 +3,7 @@ target_sources(
     
     API.hpp
     opengl.hpp
+    VertexLayout.hpp
 )
 
 add_subdirectory(opengl)
