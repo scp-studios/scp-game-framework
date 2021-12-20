@@ -47,7 +47,7 @@ namespace scp::graphics::opengl
         void setData(std::vector<T> p_newData)
         {
             bind();
-            glBufferData(GL_ARRAY_BUFFER, p_data.size() * sizeof(T), p_data.data(), GL_STATIC_DRAW);
+            glBufferData(GL_ARRAY_BUFFER, p_newData.size() * sizeof(T), p_newData.data(), GL_STATIC_DRAW);
             unbind();
         }
         
