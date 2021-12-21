@@ -4,5 +4,6 @@
 #include <string_view>
 #include <glad/glad.h>
 #include <vector>
+#include <scp/graphics/API.hpp>
 
 #endif /* D6E75889_197B_4042_82D9_6721A5CBB554 */
