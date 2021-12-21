@@ -91,6 +91,7 @@ static void openGLDebugCallback(GLenum p_source, GLenum p_type, GLuint p_id, GLe
     }
     
     *(output) << "[OPENGL]: (Src: " << source << ", T: " << type << ", Sev: " << severity << "): " << p_message << std::endl;
+    return;
 }
 
 void scp::graphics::opengl::enableContextDebugging()
