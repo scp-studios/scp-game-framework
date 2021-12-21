@@ -54,6 +54,15 @@ namespace scp::graphics::opengl
         // Swap two vertex buffers
         static void swap(VertexBuffer& a, VertexBuffer& b);
         
+        // Set a subset of the buffer to a data specified
+        template<typename T>
+        void setSubData(std::vector<T> p_data, uint32_t p_offset)
+        {
+            bind();
+            glBufferSubData(GL_ARRAY_BUFFER, p_offset, p_data.size() * sizeof(T), p_data.data());
+            unbind();
+        }
+        
         // Destructor
         ~VertexBuffer();
         
