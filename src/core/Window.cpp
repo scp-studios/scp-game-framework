@@ -140,6 +140,9 @@ m_graphicsAPI(p_graphicsAPI)
         {
             graphics::opengl::enableContextDebugging();
         }
+
+        // Uncap FPS
+        glfwSwapInterval(0);
     }
     
     glfwSetFramebufferSizeCallback(m_window, framebufferSizeCallback);
