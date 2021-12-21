@@ -39,7 +39,7 @@ static ShaderSources processShader(std::string_view shaderContent)
             {
                 shaderMode = ShaderMode::Vertex;
             }
-            else if (string_utils::startsWith(line, "//@# fragment"))
+            else if (string_utils::startsWith(line, "//#@ fragment"))
             {
                 shaderMode = ShaderMode::Fragment;
             }

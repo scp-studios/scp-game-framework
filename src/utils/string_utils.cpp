@@ -12,5 +12,5 @@ bool string_utils::startsWith(std::string_view p_a, std::string_view p_b)
         }
     }
     
-    return false;
+    return true;
 }
