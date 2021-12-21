@@ -44,6 +44,9 @@ public:
         
         elementBuffer = ElementBuffer(indices);
         
+        // NVIDIA's drivers demands that we bind vertex arrays before element
+        // buffers for some reasons.
+        vertexArray.bind();
         elementBuffer.bind();
         
         VertexLayout vertexLayout = {};
