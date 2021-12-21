@@ -17,6 +17,7 @@ VertexArray& VertexArray::operator=(VertexArray&& p_rhs)
 {
     glDeleteVertexArrays(1, &m_handle);
     moveFrom(p_rhs);
+    return *this;
 }
 
 void VertexArray::addAttribute(uint8_t p_index, VertexBuffer& p_buffer, VertexLayout& p_layout)
@@ -25,7 +26,7 @@ void VertexArray::addAttribute(uint8_t p_index, VertexBuffer& p_buffer, VertexLa
     
     p_buffer.bind();
     
-    GLenum type;
+    GLenum type = GL_FLOAT;
     switch (p_layout.type)
     {
         case VertexLayout::Type::Float:
