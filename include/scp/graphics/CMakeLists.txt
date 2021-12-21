@@ -4,6 +4,7 @@ target_sources(
     API.hpp
     opengl.hpp
     pch.hpp
+    Renderer2D.hpp
     VertexLayout.hpp
 )
 
