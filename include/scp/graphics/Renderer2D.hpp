@@ -15,7 +15,7 @@ namespace scp::graphics
         Renderer2D(API api);
         
         // Kept basic for now. Add more parameters later. Returns the ID of the sprite
-        uint64_t addSprite(uint32_t width, uint32_t height, uint32_t uvOffsetX, uint32_t uvOffsetY);
+        uint64_t addSprite(uint32_t width, uint32_t height, float uvOffsetX, float uvOffsetY);
         
         // Render everything in the batch
         void render();
@@ -25,7 +25,7 @@ namespace scp::graphics
         
     private:
         // Implementations
-        virtual uint64_t addSpriteImpl(uint32_t width, uint32_t height, uint32_t uvOffsetX, uint32_t uvOffsetY) = 0;
+        virtual uint64_t addSpriteImpl(uint32_t width, uint32_t height, float uvOffsetX, float uvOffsetY) = 0;
         virtual void renderImpl() = 0;
         
         std::unique_ptr<Renderer2D> m_implementation;

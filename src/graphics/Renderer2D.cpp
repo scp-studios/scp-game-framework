@@ -15,7 +15,7 @@ Renderer2D::Renderer2D(API api)
     }
 }
 
-uint64_t Renderer2D::addSprite(uint32_t width, uint32_t height, uint32_t uvOffsetX, uint32_t uvOffsetY)
+uint64_t Renderer2D::addSprite(uint32_t width, uint32_t height, float uvOffsetX, float uvOffsetY)
 {
     return m_implementation->addSpriteImpl(width, height, uvOffsetX, uvOffsetY);
 }
