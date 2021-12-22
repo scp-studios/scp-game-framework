@@ -10,6 +10,8 @@ namespace scp::graphics
     class Renderer2D
     {
     public:
+        Renderer2D() = default;
+        
         Renderer2D(API api);
         
         // Kept basic for now. Add more parameters later. Returns the ID of the sprite
