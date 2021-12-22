@@ -59,7 +59,7 @@ Renderer2D::Renderer2D():
 
 uint64_t Renderer2D::addSpriteImpl(uint32_t width, uint32_t height, float uvOffsetX, float uvOffsetY)
 {
-    std::vector<Vertex> vertices;
+    std::vector<Vertex> vertices(4);
     vertices[0].position.x = width / 2.0;
     vertices[0].position.y = height / 2.0;
     vertices[0].uv.x = uvOffsetX + width;
@@ -84,7 +84,7 @@ uint64_t Renderer2D::addSpriteImpl(uint32_t width, uint32_t height, float uvOffs
     vertices[3].uv.y = uvOffsetY;
     vertices[3].spriteId = m_nextSpriteID;
     
-    std::vector<uint32_t> indices;
+    std::vector<uint32_t> indices(6);
     indices[0] = 0 + (m_nextSpriteID * 6);
     indices[1] = 1 + (m_nextSpriteID * 6);
     indices[2] = 2 + (m_nextSpriteID * 6);
