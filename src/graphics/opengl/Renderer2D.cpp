@@ -22,7 +22,7 @@ struct Vertex
 };
 
 Renderer2D::Renderer2D():
-    m_shader(fileutils::loadAsString("../renderer2d.glsl")),
+    m_shader(fileutils::loadAsString("../shaders/renderer2d.glsl")),
     m_vertexArray(),
     m_nextSpriteID(0),
     m_numberOfElements(0)
@@ -41,45 +41,45 @@ Renderer2D::Renderer2D():
     aPosition.stride = sizeof(Vertex);
     
     VertexLayout aUV = {};
-    aPosition.type = VertexLayout::Type::Float;
-    aPosition.size = 2;
-    aPosition.offset = offsetof(Vertex, uv);
-    aPosition.stride = sizeof(Vertex);
+    aUV.type = VertexLayout::Type::Float;
+    aUV.size = 2;
+    aUV.offset = offsetof(Vertex, uv);
+    aUV.stride = sizeof(Vertex);
     
     VertexLayout aSpriteID = {};
-    aPosition.type = VertexLayout::Type::UnsignedInt;
-    aPosition.size = 1;
-    aPosition.offset = offsetof(Vertex, spriteId);
-    aPosition.stride = sizeof(Vertex);
+    aSpriteID.type = VertexLayout::Type::UnsignedInt;
+    aSpriteID.size = 1;
+    aSpriteID.offset = offsetof(Vertex, spriteId);
+    aSpriteID.stride = sizeof(Vertex);
     
     m_vertexArray.addAttribute(0, m_vertexBuffer, aPosition);
-    m_vertexArray.addAttribute(0, m_vertexBuffer, aUV);
-    m_vertexArray.addAttribute(0, m_vertexBuffer, aSpriteID);
+    m_vertexArray.addAttribute(1, m_vertexBuffer, aUV);
+    m_vertexArray.addAttribute(2, m_vertexBuffer, aSpriteID);
 }
 
 uint64_t Renderer2D::addSpriteImpl(uint32_t width, uint32_t height, float uvOffsetX, float uvOffsetY)
 {
     std::vector<Vertex> vertices(4);
-    vertices[0].position.x = width / 2.0;
-    vertices[0].position.y = height / 2.0;
+    vertices[0].position.x = width * 0.5;
+    vertices[0].position.y = height * 0.5;
     vertices[0].uv.x = uvOffsetX + width;
     vertices[0].uv.y = uvOffsetY;
     vertices[0].spriteId = m_nextSpriteID;
     
-    vertices[1].position.x = width / 2.0;
-    vertices[1].position.y = -height / 2.0;
+    vertices[1].position.x = width * 0.5;
+    vertices[1].position.y = height * -0.5;
     vertices[1].uv.x = uvOffsetX + width;
     vertices[1].uv.y = uvOffsetY + height;
     vertices[1].spriteId = m_nextSpriteID;
     
-    vertices[2].position.x = -width / 2.0;
-    vertices[2].position.y = -height / 2.0;
+    vertices[2].position.x = width * -0.5;
+    vertices[2].position.y = height * -0.5;
     vertices[2].uv.x = uvOffsetX;
     vertices[2].uv.y = uvOffsetY + height;
     vertices[2].spriteId = m_nextSpriteID;
     
-    vertices[3].position.x = -width / 2.0;
-    vertices[3].position.y = height / 2.0;
+    vertices[3].position.x = width * -0.5;
+    vertices[3].position.y = height * 0.5;
     vertices[3].uv.x = uvOffsetX;
     vertices[3].uv.y = uvOffsetY;
     vertices[3].spriteId = m_nextSpriteID;
@@ -106,6 +106,8 @@ uint64_t Renderer2D::addSpriteImpl(uint32_t width, uint32_t height, float uvOffs
 
 void Renderer2D::renderImpl()
 {
+    m_shader.use();
+    
     m_vertexArray.bind();
     glDrawElements(GL_TRIANGLES, m_numberOfElements, GL_UNSIGNED_INT, nullptr);
     m_vertexArray.unbind();
