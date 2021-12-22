@@ -3,6 +3,11 @@
 
 #include "../Renderer2D.hpp"
 
+#include <scp/graphics/opengl/VertexArray.hpp>
+#include <scp/graphics/opengl/ElementBuffer.hpp>
+#include <scp/graphics/opengl/VertexBuffer.hpp>
+#include <scp/graphics/opengl/Shader.hpp>
+
 namespace scp::graphics::opengl
 {
     class Renderer2D: public scp::graphics::Renderer2D
@@ -15,10 +20,28 @@ namespace scp::graphics::opengl
         
     private:
         // Add a sprite
-        void addSpriteImpl(uint32_t width, uint32_t height, uint32_t uvOffsetX, uint32_t uvOffsetY) override;
+        uint64_t addSpriteImpl(uint32_t width, uint32_t height, float uvOffsetX, float uvOffsetY) override;
         
         // Render everything in the batch
         void renderImpl() override;
+        
+        // The shader
+        Shader m_shader;
+        
+        // The vertex array
+        VertexArray m_vertexArray;
+        
+        // The vertex buffer
+        VertexBuffer m_vertexBuffer;
+        
+        // The element buffer of the render batch
+        ElementBuffer m_elementBuffer;
+        
+        // Next sprite id. We are using an incremental system to identify sprites
+        uint64_t m_nextSpriteID;
+        
+        // The amount of elements there is to draw.
+        uint32_t m_numberOfElements;
     };
 }
 
