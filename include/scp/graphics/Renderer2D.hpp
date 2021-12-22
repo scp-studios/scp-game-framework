@@ -21,7 +21,7 @@ namespace scp::graphics
         void render();
         
         // Destructor
-        ~Renderer2D();
+        virtual ~Renderer2D();
         
     private:
         // Implementations
