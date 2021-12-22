@@ -25,8 +25,8 @@ namespace scp::graphics
         
     private:
         // Implementations
-        virtual uint64_t addSpriteImpl(uint32_t width, uint32_t height, float uvOffsetX, float uvOffsetY) = 0;
-        virtual void renderImpl() = 0;
+        virtual uint64_t addSpriteImpl(uint32_t width, uint32_t height, float uvOffsetX, float uvOffsetY) { return 0; };
+        virtual void renderImpl() {};
         
         std::unique_ptr<Renderer2D> m_implementation;
     };
