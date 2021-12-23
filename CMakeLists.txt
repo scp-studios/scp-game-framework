@@ -36,7 +36,12 @@ if (UNIX AND NOT APPLE)
     target_link_libraries(glad dl)
 endif()
 
-include_directories(${CMAKE_SOURCE_DIR}/include ${GLFW_INCLUDE_DIR} ${CMAKE_SOURCE_DIR}/deps/GLAD/include)
+include_directories(
+    ${CMAKE_SOURCE_DIR}/include 
+    ${GLFW_INCLUDE_DIR} 
+    ${CMAKE_SOURCE_DIR}/deps/GLAD/include
+    ${CMAKE_SOURCE_DIR}/deps/stb
+)
 
 add_library(scp-game-framework-core)
 add_library(scp-game-framework-graphics)
