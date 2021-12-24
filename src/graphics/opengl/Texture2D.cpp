@@ -125,3 +125,39 @@ Texture2D& Texture2D::operator=(Texture2D&& p_rhs)
     destroy();
     moveFrom(p_rhs);
 }
+
+void Texture2D::bind() const
+{
+    glBindTexture(GL_TEXTURE_2D, m_handle);
+}
+
+void Texture2D::unbind() const
+{
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void Texture2D::setTextureUnit(uint8_t unit)
+{
+    glActiveTexture(GL_TEXTURE0 + unit);
+}
+
+void Texture2D::swap(Texture2D& a, Texture2D& b)
+{
+    std::swap(a.m_handle, b.m_handle);
+}
+
+Texture2D::~Texture2D()
+{
+    destroy();
+}
+
+void Texture2D::moveFrom(Texture2D& src)
+{
+    m_handle = src.m_handle;
+    src.m_handle = 0;
+}
+
+void Texture2D::destroy()
+{
+    glDeleteTextures(1, &m_handle);
+}
