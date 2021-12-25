@@ -7,6 +7,7 @@
 
 namespace scp::graphics
 {
+    // A basic 2D renderer for now. I will add more stuff later on.
     class Renderer2D
     {
     public:
@@ -14,20 +15,38 @@ namespace scp::graphics
         
         Renderer2D(API api);
         
-        // Kept basic for now. Add more parameters later. Returns the ID of the sprite
-        uint64_t addSprite(uint32_t width, uint32_t height, float uvOffsetX, float uvOffsetY);
+        // Add a texture
+        void addTexture(std::string_view path);
         
-        // Render everything in the batch
-        void render();
+        // Add a texture from an array of bytes
+        void addTexture(std::vector<uint8_t> data, bool raw = false);
         
-        // Destructor
-        virtual ~Renderer2D();
+        // Begin rendering
+        void begin();
+        
+        // Render a simple textured quad
+        void drawTexturedQuad(float width, float height, float posX, float posY, float uvRight, float uvLeft, float uvTop, float uvBottom, int8_t texture = 0);
+        
+        // Render a textureless quad
+        void drawSolidColoredQuad(float width, float height, float posX, float posY, float red, float green, float blue, float alpha);
+        
+        // Stop rendering
+        void end();
+        
+        // Flush your render stuff
+        void flush();
         
     private:
         // Implementations
-        virtual uint64_t addSpriteImpl(uint32_t width, uint32_t height, float uvOffsetX, float uvOffsetY) { return 0; };
-        virtual void renderImpl() {};
+        virtual void addTextureImpl(std::string_view path) {}
+        virtual void addTextureImpl(std::vector<uint8_t> data, bool raw) {}
+        virtual void beginImpl() {}
+        virtual void drawTexturedQuadImpl(float width, float height, float posX, float posY, float uvRight, float uvLeft, float uvTop, float uvBottom, int8_t texture) {}
+        virtual void drawSolidColoredQuadImpl(float width, float height, float posX, float posY, float red, float green, float blue, float alpha) {}
+        virtual void endImpl() {}
+        virtual void flushImpl() {}
         
+        // The actual implementation of the renderer
         std::unique_ptr<Renderer2D> m_implementation;
     };
 }
