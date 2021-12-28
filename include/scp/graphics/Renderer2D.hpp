@@ -33,6 +33,9 @@ namespace scp::graphics
         // Stop rendering
         void end();
         
+        // Virtual destructor
+        virtual ~Renderer2D();
+        
     private:
         // Implementations
         virtual void addTextureImpl(std::string_view path) {}
