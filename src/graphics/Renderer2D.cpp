@@ -45,11 +45,6 @@ void Renderer2D::end()
     m_implementation->endImpl();
 }
 
-void Renderer2D::flush()
-{
-    m_implementation->flushImpl();
-}
-
 Renderer2D::~Renderer2D()
 {
     
