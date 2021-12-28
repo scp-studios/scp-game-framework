@@ -13,7 +13,7 @@ namespace scp::math
             
         }
         
-        Vector3(T s): x(s), y(s)
+        Vector3(T s): x(s), y(s), z(s)
         {
             
         }
