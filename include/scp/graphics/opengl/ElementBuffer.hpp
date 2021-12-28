@@ -11,15 +11,15 @@ namespace scp::graphics::opengl
         ElementBuffer() = default;
         
         // Construct an empty vertex buffer with the specified size
-        ElementBuffer(uint32_t size);
+        ElementBuffer(uint32_t size, unsigned int usage = GL_STATIC_DRAW);
         
         // Construct a vertex buffer from an arbitrary vector
         template<typename T>
-        ElementBuffer(std::vector<T> p_data)
+        ElementBuffer(std::vector<T> p_data, unsigned int usage = GL_STATIC_DRAW): m_usage(usage)
         {
             glGenBuffers(1, &m_handle);
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_handle);
-            glBufferData(GL_ELEMENT_ARRAY_BUFFER, p_data.size() * sizeof(T), p_data.data(), GL_STATIC_DRAW); // TODO: Might add a little optional thingy here
+            glBufferData(GL_ELEMENT_ARRAY_BUFFER, p_data.size() * sizeof(T), p_data.data(), usage); // TODO: Might add a little optional thingy here
             
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         }
@@ -68,6 +68,9 @@ namespace scp::graphics::opengl
         
     private:
         unsigned int m_handle;
+        
+        // How the buffer is going to be used
+        unsigned int m_usage;
         
         // Move ownership from another vertex buffer
         void moveFrom(ElementBuffer& src);
