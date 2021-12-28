@@ -160,10 +160,8 @@ Shader::Shader(std::string_view source, std::string_view name)
 
 
 
-Shader::Shader(std::string_view p_vertexSource, std::string_view p_fragmentSource, std::string_view p_geometrySource, std::string_view p_name)
+Shader::Shader(std::string_view p_vertexSource, std::string_view p_fragmentSource, std::string_view p_name)
 {
-    (void) p_geometrySource;
-    
     unsigned int vertex = createShader(p_vertexSource, GL_VERTEX_SHADER);
     unsigned int fragment = createShader(p_fragmentSource, GL_FRAGMENT_SHADER);
     

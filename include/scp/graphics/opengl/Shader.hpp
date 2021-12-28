@@ -14,11 +14,11 @@ namespace scp::graphics::opengl
         Shader() = default;
         
         // Create a shader from a single source
-        Shader(std::string_view source, std::string_view name = "shader program");
+        Shader(std::string_view source, std::string_view name);
         
         // Create a shader from multiple sources
         // Note: Geometry shaders are currently not fully supported.
-        Shader(std::string_view vertexSource, std::string_view fragmentSource, std::string_view geometrySource = "", std::string_view name = "shader program");
+        Shader(std::string_view vertexSource, std::string_view fragmentSource, std::string_view name);
         
         // Shaders aren't really copiable.
         Shader(Shader&) = delete;
