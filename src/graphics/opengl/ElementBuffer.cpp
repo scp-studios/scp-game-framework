@@ -58,6 +58,13 @@ void ElementBuffer::unbind() const
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
+void ElementBuffer::clearBuffer(uint32_t p_size, unsigned int p_usage)
+{
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_handle);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, p_size, nullptr, p_usage);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+}
+
 void ElementBuffer::swap(ElementBuffer& p_a, ElementBuffer& p_b)
 {
     std::swap(p_a.m_handle, p_b.m_handle);

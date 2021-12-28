@@ -51,6 +51,9 @@ namespace scp::graphics::opengl
             unbind();
         }
         
+        // Clear the buffer and allocate some space for new data
+        void clearBuffer(uint32_t size, unsigned int usage = GL_STATIC_DRAW);
+        
         // Swap two vertex buffers
         static void swap(VertexBuffer& a, VertexBuffer& b);
         

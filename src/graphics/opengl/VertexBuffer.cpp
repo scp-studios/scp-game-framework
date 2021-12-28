@@ -58,6 +58,13 @@ void VertexBuffer::unbind() const
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+void VertexBuffer::clearBuffer(uint32_t size, unsigned int usage)
+{
+    glBindBuffer(GL_ARRAY_BUFFER, m_handle);
+    glBufferData(GL_ARRAY_BUFFER, size, nullptr, usage);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
 void VertexBuffer::swap(VertexBuffer& p_a, VertexBuffer& p_b)
 {
     std::swap(p_a.m_handle, p_b.m_handle);
