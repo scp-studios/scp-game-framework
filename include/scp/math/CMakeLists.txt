@@ -3,4 +3,5 @@ target_sources(
     
     Vector2.hpp
     Vector3.hpp
+    Vector4.hpp
 )
