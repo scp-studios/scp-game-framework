@@ -58,7 +58,7 @@ public:
         vertexArray.addAttribute(0, vertexBuffer, vertexLayout);
         
         std::string shaderSource = scp::utils::file_utils::loadAsString("../shaders/opengl-graphics-test.glsl");
-        shader = Shader(shaderSource);
+        shader = Shader(shaderSource, "../shaders/opengl-graphics-test.glsl");
     }
     
     void onUpdate() override

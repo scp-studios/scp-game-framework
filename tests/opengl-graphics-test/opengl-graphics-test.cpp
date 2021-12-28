@@ -34,7 +34,7 @@ public:
         vertexBuffer = VertexBuffer(vertices);
         
         std::string shaderSource = scp::utils::file_utils::loadAsString("../shaders/opengl-graphics-test.glsl");
-        shader = Shader(shaderSource);
+        shader = Shader(shaderSource, "../shaders/opengl-graphics-test.glsl");
         
         VertexLayout vertexLayout = {};
         vertexLayout.type = VertexLayout::Type::Float;
