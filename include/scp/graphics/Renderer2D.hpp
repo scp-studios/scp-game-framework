@@ -33,9 +33,6 @@ namespace scp::graphics
         // Stop rendering
         void end();
         
-        // Flush your render stuff
-        void flush();
-        
     private:
         // Implementations
         virtual void addTextureImpl(std::string_view path) {}
@@ -44,7 +41,6 @@ namespace scp::graphics
         virtual void drawTexturedQuadImpl(float width, float height, float posX, float posY, float uvRight, float uvLeft, float uvTop, float uvBottom, int8_t texture) {}
         virtual void drawSolidColoredQuadImpl(float width, float height, float posX, float posY, float red, float green, float blue, float alpha) {}
         virtual void endImpl() {}
-        virtual void flushImpl() {}
         
         // The actual implementation of the renderer
         std::unique_ptr<Renderer2D> m_implementation;
