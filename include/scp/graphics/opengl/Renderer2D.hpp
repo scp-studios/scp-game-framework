@@ -56,8 +56,14 @@ namespace scp::graphics::opengl
         // The offset of the write thingy
         uint32_t m_bufferOffset;
         
-        // The offset of the indices
+        // The offset of the index buffer
+        uint32_t m_indexBufferOffset;
+        
+        // Offset of the indices
         uint32_t m_indexOffset;
+        
+        // Vertex offset (used by the indices as well)
+        uint32_t m_vertexOffset;
     };
 }
 
