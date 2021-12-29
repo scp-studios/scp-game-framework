@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#ifdef DO_NOT_DEFINE_THIS_MACRO_OR_ELSE_I_WILL_COME_OVER_TO_YOUR_HOUSE_AND_BEAT_YOU_WITH_A_BAT
+//#ifdef DO_NOT_DEFINE_THIS_MACRO_OR_ELSE_I_WILL_COME_OVER_TO_YOUR_HOUSE_AND_BEAT_YOU_WITH_A_BAT
 
 #include <glad/glad.h>
 
@@ -21,7 +21,7 @@ class MyScene: public Scene
 public:
     MyScene(): renderer(scp::graphics::API::OpenGL)
     {
-        renderer.addSprite(1, 1, 0, 0);
+        
     }
     
     void onUpdate() override
@@ -31,7 +31,12 @@ public:
     
     void render() override
     {
-        renderer.render();
+        renderer.begin();
+        
+        renderer.drawSolidColoredQuad(0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f);
+        renderer.drawSolidColoredQuad(0.5f, 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f);
+        
+        renderer.end();
     }
     
     ~MyScene()
@@ -76,11 +81,11 @@ private:
     Window& window;
 };
 
-#endif
+//#endif
 
 int main()
 {
-    #ifdef DO_NOT_DEFINE_THIS_MACRO_OR_ELSE_I_WILL_COME_OVER_TO_YOUR_HOUSE_AND_BEAT_YOU_WITH_A_BAT
+    //#ifdef DO_NOT_DEFINE_THIS_MACRO_OR_ELSE_I_WILL_COME_OVER_TO_YOUR_HOUSE_AND_BEAT_YOU_WITH_A_BAT
     try
     {
         Application app;
@@ -90,7 +95,7 @@ int main()
         std::cerr << "[FATAL ERROR]: " << e.what() << std::endl;
         return EXIT_FAILURE;
     }
-    #endif
+    //#endif
     
     //std::cout << scp::utils::string_utils::startsWith("Hello World!", "Hello");
     
