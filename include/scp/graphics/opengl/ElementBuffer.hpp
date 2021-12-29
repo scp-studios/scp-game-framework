@@ -48,7 +48,6 @@ namespace scp::graphics::opengl
         {
             bind();
             glBufferData(GL_ELEMENT_ARRAY_BUFFER, p_newData.size() * sizeof(T), p_newData.data(), GL_STATIC_DRAW);
-            unbind();
         }
         
         // Set a subset of the buffer to a data specified
@@ -57,7 +56,6 @@ namespace scp::graphics::opengl
         {
             bind();
             glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, p_offset, p_data.size() * sizeof(T), p_data.data());
-            unbind();
         }
         
         // Clear the buffer and allocate some space for new data

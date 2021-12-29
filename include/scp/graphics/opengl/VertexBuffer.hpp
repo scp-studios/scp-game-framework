@@ -48,7 +48,6 @@ namespace scp::graphics::opengl
         {
             bind();
             glBufferData(GL_ARRAY_BUFFER, p_newData.size() * sizeof(T), p_newData.data(), p_usage);
-            unbind();
         }
         
         // Clear the buffer and allocate some space for new data
@@ -63,7 +62,6 @@ namespace scp::graphics::opengl
         {
             bind();
             glBufferSubData(GL_ARRAY_BUFFER, p_offset, p_data.size() * sizeof(T), p_data.data());
-            unbind();
         }
         
         // Destructor
