@@ -35,7 +35,7 @@ namespace scp::graphics::opengl
         // Stop drawing
         void endImpl() override;
         
-        virtual ~Renderer2D();
+        virtual ~Renderer2D() {};
         
     private:
         // The shader. A single render batch can only have one shader so...
@@ -54,7 +54,10 @@ namespace scp::graphics::opengl
         std::vector<Texture2D> m_textures;
         
         // The offset of the write thingy
-        uint32_t m_bufferWriteOffset;
+        uint32_t m_bufferOffset;
+        
+        // The offset of the indices
+        uint32_t m_indexOffset;
     };
 }
 
