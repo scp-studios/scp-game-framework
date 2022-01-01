@@ -16,12 +16,16 @@ using scp::Scene;
 
 using scp::graphics::Renderer2D;
 
+namespace opengl = scp::graphics::opengl;
+
 class MyScene: public Scene
 {
 public:
     MyScene(): renderer(scp::graphics::API::OpenGL)
     {
         renderer.addTexture("../textures/TestTexture.png");
+        
+        opengl::enableBlending();
     }
     
     void onUpdate() override
