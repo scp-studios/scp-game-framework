@@ -6,6 +6,8 @@ namespace scp::graphics
     namespace opengl
     {
         void enableContextDebugging();
+        
+        void enableBlending();
     }
 }
 
