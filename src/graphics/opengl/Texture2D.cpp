@@ -25,12 +25,16 @@ Texture2D::Texture2D(std::string_view imagePath)
     {
     case 1:
         format = GL_RED;
+        break;
     case 2:
         format = GL_RG;
+        break;
     case 3:
         format = GL_RGB;
+        break;
     case 4:
         format = GL_RGBA;
+        break;
     default:
         format = GL_RGB;
     }
@@ -47,7 +51,7 @@ Texture2D::Texture2D(std::vector<uint8_t> p_imageData, bool p_raw)
 {
     uint8_t* imageData = nullptr;
     
-    int32_t width, height, nrChannels;
+    int32_t width = 0, height = 0, nrChannels = 0;
     
     if (p_raw)
     {
@@ -71,12 +75,16 @@ Texture2D::Texture2D(std::vector<uint8_t> p_imageData, bool p_raw)
     {
     case 1:
         format = GL_RED;
+        break;
     case 2:
         format = GL_RG;
+        break;
     case 3:
         format = GL_RGB;
+        break;
     case 4:
         format = GL_RGBA;
+        break;
     default:
         format = GL_RGB;
     }
@@ -113,6 +121,7 @@ Texture2D& Texture2D::operator=(Texture2D& p_rhs)
 {
     Texture2D newObject(p_rhs);
     swap(newObject, *this);
+    return *this;
 }
 
 Texture2D::Texture2D(Texture2D&& p_src)
@@ -124,6 +133,7 @@ Texture2D& Texture2D::operator=(Texture2D&& p_rhs)
 {
     destroy();
     moveFrom(p_rhs);
+    return *this;
 }
 
 void Texture2D::bind() const
