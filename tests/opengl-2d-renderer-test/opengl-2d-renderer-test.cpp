@@ -21,7 +21,7 @@ class MyScene: public Scene
 public:
     MyScene(): renderer(scp::graphics::API::OpenGL)
     {
-        
+        renderer.addTexture("../textures/TestTexture.png");
     }
     
     void onUpdate() override
@@ -34,7 +34,8 @@ public:
         renderer.begin();
         
         renderer.drawSolidColoredQuad(0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f);
-        renderer.drawSolidColoredQuad(0.5f, 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f);
+        //renderer.drawTexturedQuad(0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1);
+        renderer.drawTexturedQuad(0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0);
         
         renderer.end();
     }
