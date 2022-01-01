@@ -28,8 +28,7 @@ Renderer2D::Renderer2D():
     m_shader(fileutils::loadAsString("../shaders/opengl_renderer2d.glsl"), "../shaders/opengl_renderer2d.glsl"),
     m_vertexArray(),
     m_vertexBuffer(1024 * sizeof(Vertex), GL_DYNAMIC_DRAW),
-    m_elementBuffer(1024 * sizeof(Vertex), GL_DYNAMIC_DRAW),
-    m_textures(32)
+    m_elementBuffer(1024 * sizeof(Vertex), GL_DYNAMIC_DRAW)
 {
     m_vertexArray.bind();
     m_elementBuffer.bind();
@@ -105,28 +104,28 @@ void Renderer2D::drawTexturedQuadImpl(float width, float height, float posX, flo
     
     vertices[0].position.x = width / 2 + posX;
     vertices[0].position.y = height / 2 + posY;
-    vertices[0].color = Vector4(1.0f);
+    vertices[0].color = Vector4(0.0f);
     vertices[0].uv.x = uvRight;
     vertices[0].uv.y = uvTop;
     vertices[0].texture = texture;
     
     vertices[1].position.x = width / 2 + posX;
     vertices[1].position.y = height / -2 + posY;
-    vertices[1].color = Vector4(1.0f);
+    vertices[1].color = Vector4(0.0f);
     vertices[1].uv.x = uvRight;
     vertices[1].uv.y = uvBottom;
     vertices[1].texture = texture;
     
     vertices[2].position.x = width / -2 + posX;
     vertices[2].position.y = height / -2 + posY;
-    vertices[2].color = Vector4(1.0f);
+    vertices[2].color = Vector4(0.0f);
     vertices[2].uv.x = uvLeft;
     vertices[2].uv.y = uvBottom;
     vertices[2].texture = texture;
     
     vertices[3].position.x = width / -2 + posX;
     vertices[3].position.y = height / 2 + posY;
-    vertices[3].color = Vector4(1.0f);
+    vertices[3].color = Vector4(0.0f);
     vertices[3].uv.x = uvLeft;
     vertices[3].uv.y = uvTop;
     vertices[3].texture = texture;
@@ -211,5 +210,12 @@ void Renderer2D::drawSolidColoredQuadImpl(float width, float height, float posX,
 
 void Renderer2D::endImpl()
 {
+    // Bind the textures
+    for (uint16_t i = 0; i < m_textures.size(); i++)
+    {
+        m_textures[i].setTextureUnit(i);
+        m_textures[i].bind();
+    }
+    
     glDrawElements(GL_TRIANGLES, m_indexOffset, GL_UNSIGNED_INT, nullptr);
 }

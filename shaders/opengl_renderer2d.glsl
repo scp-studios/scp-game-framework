@@ -29,5 +29,6 @@ in vec2 uv;
 
 void main()
 {
-    outColor = color + texture(textures[int(myTexture)], uv);
+    int textureIndex = int(myTexture);
+    outColor = color + texture(textures[textureIndex], uv);
 }
