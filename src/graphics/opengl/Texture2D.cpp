@@ -5,7 +5,7 @@
 
 using scp::graphics::opengl::Texture2D;
 
-Texture2D::Texture2D(std::string_view imagePath)
+Texture2D::Texture2D(std::string_view imagePath, GLenum filtering)
 {
     int32_t width, height, nrChannels;
     uint8_t* imageData = stbi_load(imagePath.data(), &width, &height, &nrChannels, 0);
@@ -19,6 +19,9 @@ Texture2D::Texture2D(std::string_view imagePath)
     
     glGenTextures(1, &m_handle);
     glBindTexture(GL_TEXTURE_2D, m_handle);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filtering);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filtering);
     
     GLenum format;
     switch (nrChannels)
@@ -47,7 +50,7 @@ Texture2D::Texture2D(std::string_view imagePath)
     stbi_image_free(imageData);
 }
 
-Texture2D::Texture2D(std::vector<uint8_t> p_imageData, bool p_raw)
+Texture2D::Texture2D(std::vector<uint8_t> p_imageData, bool p_raw, GLenum filtering)
 {
     uint8_t* imageData = nullptr;
     
@@ -69,6 +72,9 @@ Texture2D::Texture2D(std::vector<uint8_t> p_imageData, bool p_raw)
     
     glGenTextures(1, &m_handle);
     glBindTexture(GL_TEXTURE_2D, m_handle);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filtering);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filtering);
     
     GLenum format;
     switch (nrChannels)

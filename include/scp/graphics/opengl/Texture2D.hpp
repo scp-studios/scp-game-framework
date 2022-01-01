@@ -11,10 +11,10 @@ namespace scp::graphics::opengl
         Texture2D() = default;
         
         // Construct a texture from an image path
-        Texture2D(std::string_view imagePath);
+        Texture2D(std::string_view imagePath, GLenum filtering = GL_LINEAR_MIPMAP_LINEAR);
         
         // Construct a texture from an array of bytes
-        Texture2D(std::vector<uint8_t> imageData, bool raw = false);
+        Texture2D(std::vector<uint8_t> imageData, bool raw = false, GLenum filtering = GL_LINEAR_MIPMAP_LINEAR);
         
         // Copy constructor
         Texture2D(Texture2D& src);
