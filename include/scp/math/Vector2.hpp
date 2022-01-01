@@ -25,8 +25,54 @@ namespace scp::math
             
         }
         
-        // More stuff coming soon
-        // ...
+        Vector2 operator+(Vector2& a)
+        {
+            return Vector2(x + a.x, y + a.y);
+        }
+        
+        Vector2& operator+=(Vector2& a)
+        {
+            x += a.x;
+            y += a.y;
+            
+            return *this;
+        }
+        
+        Vector2 operator-(Vector2& a)
+        {
+            return Vector2(x - a.x, y - a.y);
+        }
+        
+        Vector2 operator-=(Vector2& a)
+        {
+            y -= a.y;
+            x -= a.x;
+            
+            return *this;
+        }
+        
+        Vector2 operator*(T a)
+        {
+            return Vector2(x * a, y * a);
+        }
+        
+        Vector2 operator*=(T a)
+        {
+            x *= a;
+            y *= a;
+            
+            return *this;
+        }
+        
+        T dot(Vector2& a)
+        {
+            return (x * a.x) + (y * a.y)
+        }
+        
+        T* data()
+        {
+            return &x;
+        }
         
         T x;
         T y;
