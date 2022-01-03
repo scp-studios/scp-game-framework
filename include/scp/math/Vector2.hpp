@@ -66,7 +66,7 @@ namespace scp::math
         
         T dot(Vector2& a)
         {
-            return (x * a.x) + (y * a.y)
+            return (x * a.x) + (y * a.y);
         }
         
         T* data()
