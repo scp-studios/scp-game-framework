@@ -7,7 +7,7 @@ namespace scp::graphics
     {
         void enableContextDebugging();
         
-        void enableBlending();
+        void enable2DBlending();
     }
 }
 

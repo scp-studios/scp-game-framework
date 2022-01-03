@@ -25,7 +25,7 @@ public:
     {
         renderer.addTexture("../textures/TestTexture.png");
         
-        opengl::enableBlending();
+        opengl::enable2DBlending();
     }
     
     void onUpdate() override
@@ -39,7 +39,7 @@ public:
         
         renderer.drawSolidColoredQuad(0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f);
         //renderer.drawTexturedQuad(0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1);
-        renderer.drawTexturedQuad(0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0);
+        renderer.drawTexturedQuad(0.5f * 0.5625, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0);
         
         renderer.end();
     }
@@ -64,7 +64,7 @@ public:
         
         window.show();
         
-        glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         
         while (window.isOpen())
         {

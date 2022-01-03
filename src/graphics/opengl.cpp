@@ -102,8 +102,8 @@ void scp::graphics::opengl::enableContextDebugging()
     glDebugMessageCallback(openGLDebugCallback, nullptr);
 }
 
-void scp::graphics::opengl::enableBlending()
+void scp::graphics::opengl::enable2DBlending()
 {
     glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 }

@@ -30,5 +30,13 @@ in vec2 uv;
 void main()
 {
     int textureIndex = int(myTexture);
-    outColor = color + texture(textures[textureIndex], uv);
+    vec4 textureColor = texture(textures[textureIndex], uv);
+    
+    if (textureColor.xyz == vec3(0.0, 0.0, 0.0))
+    {
+        textureColor.xyz = vec3(1.0);
+    }
+    
+    //outColor = vec4(1.0, 0.0, 0.0, textureColor.w) + color;
+    outColor = textureColor + color;
 }
