@@ -27,6 +27,8 @@ static void openGLDebugCallback(GLenum p_source, GLenum p_type, GLuint p_id, GLe
     case GL_DEBUG_SOURCE_OTHER:
         source = "OTHER";
         break;
+    default:
+        source = "UKNOWN";
     }
     
     std::ostream* output;
@@ -70,6 +72,9 @@ static void openGLDebugCallback(GLenum p_source, GLenum p_type, GLuint p_id, GLe
         type = "OTHER";
         output = &std::cout;
         break;
+    default:
+        type = "UNKNOWN";
+        output = &std::cout;
     }
     
     std::string severity;
@@ -88,6 +93,9 @@ static void openGLDebugCallback(GLenum p_source, GLenum p_type, GLuint p_id, GLe
     case GL_DEBUG_SEVERITY_NOTIFICATION:
         output = &std::cout;
         severity = "NOTIFICATION";
+    default:
+        output = &std::cout;
+        severity = "UNKNOWN";
     }
     
     *(output) << "[OPENGL]: (Src: " << source << ", T: " << type << ", Sev: " << severity << "): " << p_message << std::endl;
