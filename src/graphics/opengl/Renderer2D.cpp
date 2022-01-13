@@ -102,30 +102,34 @@ void Renderer2D::drawTexturedQuadImpl(float width, float height, float posX, flo
 {
     std::vector<Vertex> vertices(4);
     
-    vertices[0].position.x = width / 2 + posX;
-    vertices[0].position.y = height / 2 + posY;
+    vertices[0].position.x = (width / 2) + posX;
+    vertices[0].position.y = (height / 2) + posY;
     vertices[0].color = Vector4(0.0f);
+    vertices[0].color.w = 1.0f;
     vertices[0].uv.x = uvRight;
     vertices[0].uv.y = uvTop;
     vertices[0].texture = texture;
     
-    vertices[1].position.x = width / 2 + posX;
-    vertices[1].position.y = height / -2 + posY;
+    vertices[1].position.x = (width / 2) + posX;
+    vertices[1].position.y = (height / -2) + posY;
     vertices[1].color = Vector4(0.0f);
+    vertices[1].color.w = 1.0f;
     vertices[1].uv.x = uvRight;
     vertices[1].uv.y = uvBottom;
     vertices[1].texture = texture;
     
-    vertices[2].position.x = width / -2 + posX;
-    vertices[2].position.y = height / -2 + posY;
+    vertices[2].position.x = (width / -2) + posX;
+    vertices[2].position.y = (height / -2) + posY;
     vertices[2].color = Vector4(0.0f);
+    vertices[2].color.w = 1.0f;
     vertices[2].uv.x = uvLeft;
     vertices[2].uv.y = uvBottom;
     vertices[2].texture = texture;
     
-    vertices[3].position.x = width / -2 + posX;
-    vertices[3].position.y = height / 2 + posY;
+    vertices[3].position.x = (width / -2) + posX;
+    vertices[3].position.y = (height / 2) + posY;
     vertices[3].color = Vector4(0.0f);
+    vertices[3].color.w = 1.0f;
     vertices[3].uv.x = uvLeft;
     vertices[3].uv.y = uvTop;
     vertices[3].texture = texture;
