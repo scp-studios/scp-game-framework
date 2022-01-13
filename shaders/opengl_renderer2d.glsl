@@ -32,13 +32,5 @@ void main()
     int textureIndex = int(myTexture);
     vec4 textureColor = texture(textures[textureIndex], uv);
     
-    float finalAlpha = textureColor.w;
-    
-    if (textureColor.w == 1.0)
-    {
-        finalAlpha = color.w;
-    }
-    
-    //outColor = vec4(1.0, 0.0, 0.0, textureColor.w) + color;
-    outColor = vec4(vec3(textureColor) + vec3(color), finalAlpha);
+    outColor = textureColor + color;
 }
