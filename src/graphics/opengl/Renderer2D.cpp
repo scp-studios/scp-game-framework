@@ -24,8 +24,8 @@ struct Vertex
     float texture;
 };
 
-Renderer2D::Renderer2D():
-    m_shader(fileutils::loadAsString("../shaders/opengl_renderer2d.glsl"), "../shaders/opengl_renderer2d.glsl"),
+Renderer2D::Renderer2D(std::string_view shaderSource):
+    m_shader(shaderSource, "2D renderer shader"),
     m_vertexArray(),
     m_vertexBuffer(1024 * sizeof(Vertex), GL_DYNAMIC_DRAW),
     m_elementBuffer(1024 * sizeof(Vertex), GL_DYNAMIC_DRAW)

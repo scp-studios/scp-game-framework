@@ -13,7 +13,7 @@ namespace scp::graphics
     public:
         Renderer2D() = default;
         
-        Renderer2D(API api);
+        Renderer2D(API api, std::string_view shaderSource);
         
         // Add a texture
         void addTexture(std::string_view path);

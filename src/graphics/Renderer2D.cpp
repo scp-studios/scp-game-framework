@@ -4,14 +4,14 @@
 
 using scp::graphics::Renderer2D;
 
-Renderer2D::Renderer2D(API api)
+Renderer2D::Renderer2D(API api, std::string_view shaderSource)
 {
     switch (api)
     {
         case API::OpenGL:
-            m_implementation = std::make_unique<scp::graphics::opengl::Renderer2D>();
+            m_implementation = std::make_unique<scp::graphics::opengl::Renderer2D>(shaderSource);
         default:
-            m_implementation = std::make_unique<scp::graphics::opengl::Renderer2D>();
+            m_implementation = std::make_unique<scp::graphics::opengl::Renderer2D>(shaderSource);
     }
 }
 

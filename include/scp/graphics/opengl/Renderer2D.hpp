@@ -15,7 +15,7 @@ namespace scp::graphics::opengl
     {
     public:
         // Basic default constructor for now. I will add more later on.
-        Renderer2D();
+        Renderer2D(std::string_view shaderSource);
         
         // Add a texture
         void addTextureImpl(std::string_view path) override;
