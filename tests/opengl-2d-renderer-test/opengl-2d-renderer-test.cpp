@@ -11,17 +11,20 @@
 #include <scp/graphics/Renderer2D.hpp>
 #include <scp/graphics/API.hpp>
 
+#include <scp/utils/file-utils.hpp>
+
 using scp::Window;
 using scp::Scene;
 
 using scp::graphics::Renderer2D;
 
 namespace opengl = scp::graphics::opengl;
+namespace fileutils = scp::utils::file_utils;
 
 class MyScene: public Scene
 {
 public:
-    MyScene(): renderer(scp::graphics::API::OpenGL)
+    MyScene(): renderer(scp::graphics::API::OpenGL, fileutils::loadAsString("../shaders/opengl_renderer2d.glsl"))
     {
         renderer.addTexture("../textures/TestTexture.png");
         
