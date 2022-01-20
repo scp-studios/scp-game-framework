@@ -130,7 +130,7 @@ namespace scp::math
             return reinterpret_cast<T*>(m_data);
         }
         
-    private:
+        // Temporary. Change later.
         T m_data[4][4];
     };
 }
