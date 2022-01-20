@@ -61,7 +61,7 @@ namespace scp::math
         Vector3& operator*=(T a)
         {
             (*this) = a * (*this);
-            return (*this)
+            return (*this);
         }
         
         T dot(Vector3& a)
@@ -74,8 +74,8 @@ namespace scp::math
             return {
                 y * a.z - z * a.y,
                 z * a.x - x * a.z,
-                x * a.y - y * b.x
-            }
+                x * a.y - y * a.x
+            };
         }
         
         // More stuff coming soon
