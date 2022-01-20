@@ -11,7 +11,7 @@ namespace scp::math
         template<typename T>
         Matrix4<T> scale(Matrix4<T> m, Vector3<T> v)
         {
-            Matrix4<T> scaleMatrix;
+            Matrix4<T> scaleMatrix(1.0);
             scaleMatrix.m_data[0][0] = v.x;
             scaleMatrix.m_data[1][1] = v.y;
             scaleMatrix.m_data[2][2] = v.z;
@@ -23,7 +23,7 @@ namespace scp::math
         template<typename T>
         Matrix4<T> translate(Matrix4<T> m, Vector3<T> v)
         {
-            Matrix4<T> translateMatrix;
+            Matrix4<T> translateMatrix(1.0);
             translateMatrix.m_data[0][3] = v.x;
             translateMatrix.m_data[1][3] = v.y;
             translateMatrix.m_data[2][3] = v.z;
