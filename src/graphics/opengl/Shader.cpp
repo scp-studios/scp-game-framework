@@ -328,7 +328,8 @@ void Shader::setUniform(std::string_view name, scp::math::Vector4<float> value)
 void Shader::setUniform(std::string_view name, scp::math::Matrix4<float> value)
 {
     int location = glGetUniformLocation(m_shader, name.data());
-    glUniformMatrix4fv(location, 1, GL_FALSE, value.data());
+    // Maybe change this later. I don't know.
+    glUniformMatrix4fv(location, 1, GL_TRUE, value.data());
 }
 
 
