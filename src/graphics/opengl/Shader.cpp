@@ -307,25 +307,25 @@ void Shader::setUniform(std::string_view name, float valueX, float valueY, float
     glUniform4f(location, valueX, valueY, valueZ, valueW);
 }
 
-void Shader::setUnifrom(std::string_view name, scp::math::Vector2<float> value)
+void Shader::setUniform(std::string_view name, scp::math::Vector2<float> value)
 {
     int location = glGetUniformLocation(m_shader, name.data());
     glUniform2fv(location, 1, value.data());
 }
 
-void Shader::setUnifrom(std::string_view name, scp::math::Vector3<float> value)
+void Shader::setUniform(std::string_view name, scp::math::Vector3<float> value)
 {
     int location = glGetUniformLocation(m_shader, name.data());
     glUniform3fv(location, 1, reinterpret_cast<float*>(&value));
 }
 
-void Shader::setUnifrom(std::string_view name, scp::math::Vector4<float> value)
+void Shader::setUniform(std::string_view name, scp::math::Vector4<float> value)
 {
     int location = glGetUniformLocation(m_shader, name.data());
     glUniform4fv(location, 1, reinterpret_cast<float*>(&value));
 }
 
-void Shader::setUnifrom(std::string_view name, scp::math::Matrix4<float> value)
+void Shader::setUniform(std::string_view name, scp::math::Matrix4<float> value)
 {
     int location = glGetUniformLocation(m_shader, name.data());
     glUniformMatrix4fv(location, 1, GL_FALSE, value.data());

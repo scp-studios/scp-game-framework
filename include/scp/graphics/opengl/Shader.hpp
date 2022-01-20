@@ -56,12 +56,12 @@ namespace scp
             void setUniform(std::string_view name, float valueX, float valueY);
             void setUniform(std::string_view name, float valueX, float valueY, float valueZ);
             void setUniform(std::string_view name, float valueX, float valueY, float valueZ, float valueW);
-            void setUnifrom(std::string_view name, scp::math::Vector2<float> value);
-            void setUnifrom(std::string_view name, scp::math::Vector3<float> value);
-            void setUnifrom(std::string_view name, scp::math::Vector4<float> value);
+            void setUniform(std::string_view name, scp::math::Vector2<float> value);
+            void setUniform(std::string_view name, scp::math::Vector3<float> value);
+            void setUniform(std::string_view name, scp::math::Vector4<float> value);
             //void setUnifrom(std::string_view name, Matrix2<float> value);
             //void setUnifrom(std::string_view name, Matrix3<float> value);
-            void setUnifrom(std::string_view name, scp::math::Matrix4<float> value);
+            void setUniform(std::string_view name, scp::math::Matrix4<float> value);
 
             // Destructor
             ~Shader();
