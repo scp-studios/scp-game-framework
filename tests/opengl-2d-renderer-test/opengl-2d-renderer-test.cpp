@@ -41,8 +41,8 @@ public:
         renderer.begin();
         
         //renderer.drawTexturedQuad(0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1);
-        renderer.drawTexturedQuad(0.5f, 0.5f, -0.25f / 2, -0.25f / 2, 1.0f, 0.0f, 0.0f, 1.0f, 0);
-        renderer.drawSolidColoredQuad(0.5f, 0.5f, 0.25f / 2, 0.25f / 2, 0.0f, 1.0f, 0.0f, 0.5f);
+        renderer.drawTexturedQuad(128.0f, 128.0f, 800.0f, 200.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0);
+        renderer.drawSolidColoredQuad(200.0f, 200.0f, 400.0f, 300.0f, 0.0f, 1.0f, 0.0f, 0.5f);
         
         renderer.end();
     }
