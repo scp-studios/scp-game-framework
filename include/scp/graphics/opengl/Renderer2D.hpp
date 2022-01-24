@@ -1,6 +1,8 @@
 #ifndef A4B50858_1312_4958_929D_53A03F80D5C8
 #define A4B50858_1312_4958_929D_53A03F80D5C8
 
+#include <scp/graphics/pch.hpp>
+
 #include "../Renderer2D.hpp"
 
 #include <scp/graphics/opengl/VertexArray.hpp>
@@ -64,6 +66,9 @@ namespace scp::graphics::opengl
         
         // Vertex offset (used by the indices as well)
         uint32_t m_vertexOffset;
+        
+        // The projection matrix
+        math::Matrix4<float> m_projectionMatrix;
     };
 }
 

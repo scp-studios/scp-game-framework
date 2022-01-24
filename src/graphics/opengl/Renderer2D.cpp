@@ -6,6 +6,10 @@
 
 #include <scp/graphics/VertexLayout.hpp>
 
+#include <scp/math.hpp>
+#include <scp/math/projections.hpp>
+#include <scp/Window.hpp>
+
 using scp::graphics::opengl::Renderer2D;
 using scp::graphics::opengl::VertexBuffer;
 using scp::graphics::opengl::VertexArray;
@@ -85,6 +89,12 @@ void Renderer2D::addTextureImpl(std::vector<uint8_t> p_data, bool p_raw)
 
 void Renderer2D::beginImpl()
 {
+    // Get information about the window
+    Window& window = Window::getInstance();
+    
+    // Update the projection matrix
+    m_projectionMatrix = math::projections::orthgraphic<float>(window.getWidth(), 0.0f, 0.0f, window.getHeight(), 1.0f, 0.0f);
+    
     // Bind the vertex array
     m_vertexArray.bind();
     
@@ -96,35 +106,38 @@ void Renderer2D::beginImpl()
     
     // Use the shader
     m_shader.use();
+    
+    // Set the project matrix
+    m_shader.setUniform("projection", m_projectionMatrix);
 }
 
 void Renderer2D::drawTexturedQuadImpl(float width, float height, float posX, float posY, float uvRight, float uvLeft, float uvTop, float uvBottom, int8_t texture)
 {
     std::vector<Vertex> vertices(4);
     
-    vertices[0].position.x = (width / 2) + posX;
-    vertices[0].position.y = (height / 2) + posY;
+    vertices[0].position.x = posX;
+    vertices[0].position.y = posY;
     vertices[0].color = Vector4(0.0f);
     vertices[0].uv.x = uvRight;
     vertices[0].uv.y = uvTop;
     vertices[0].texture = texture;
     
-    vertices[1].position.x = (width / 2) + posX;
-    vertices[1].position.y = (height / -2) + posY;
+    vertices[1].position.x = posX;
+    vertices[1].position.y = posY + height;
     vertices[1].color = Vector4(0.0f);
     vertices[1].uv.x = uvRight;
     vertices[1].uv.y = uvBottom;
     vertices[1].texture = texture;
     
-    vertices[2].position.x = (width / -2) + posX;
-    vertices[2].position.y = (height / -2) + posY;
+    vertices[2].position.x = posX + width;
+    vertices[2].position.y = posY + height;
     vertices[2].color = Vector4(0.0f);
     vertices[2].uv.x = uvLeft;
     vertices[2].uv.y = uvBottom;
     vertices[2].texture = texture;
     
-    vertices[3].position.x = (width / -2) + posX;
-    vertices[3].position.y = (height / 2) + posY;
+    vertices[3].position.x = posX + width;
+    vertices[3].position.y = posY;
     vertices[3].color = Vector4(0.0f);
     vertices[3].uv.x = uvLeft;
     vertices[3].uv.y = uvTop;
@@ -151,8 +164,8 @@ void Renderer2D::drawSolidColoredQuadImpl(float width, float height, float posX,
 {
     std::vector<Vertex> vertices(4);
     
-    vertices[0].position.x = width * 0.5 + posX;
-    vertices[0].position.y = height * 0.5 + posY;
+    vertices[0].position.x = posX;
+    vertices[0].position.y = posY;
     vertices[0].color.x = red;
     vertices[0].color.y = green;
     vertices[0].color.z = blue;
@@ -161,8 +174,8 @@ void Renderer2D::drawSolidColoredQuadImpl(float width, float height, float posX,
     vertices[0].uv.y = 0;
     vertices[0].texture = -1;
     
-    vertices[1].position.x = width * 0.5 + posX;
-    vertices[1].position.y = height * -0.5 + posY;
+    vertices[1].position.x = posX;
+    vertices[1].position.y = posY + height;
     vertices[1].color.x = red;
     vertices[1].color.y = green;
     vertices[1].color.z = blue;
@@ -171,8 +184,8 @@ void Renderer2D::drawSolidColoredQuadImpl(float width, float height, float posX,
     vertices[1].uv.y = 0;
     vertices[1].texture = -1;
     
-    vertices[2].position.x = width * -0.5 + posX;
-    vertices[2].position.y = height * -0.5 + posY;
+    vertices[2].position.x = posX + width;
+    vertices[2].position.y = posY + height;
     vertices[2].color.x = red;
     vertices[2].color.y = green;
     vertices[2].color.z = blue;
@@ -181,8 +194,8 @@ void Renderer2D::drawSolidColoredQuadImpl(float width, float height, float posX,
     vertices[2].uv.y = 0;
     vertices[2].texture = -1;
     
-    vertices[3].position.x = width * -0.5 + posX;
-    vertices[3].position.y = height * 0.5 + posY;
+    vertices[3].position.x = posX + width;
+    vertices[3].position.y = posY;
     vertices[3].color.x = red;
     vertices[3].color.y = green;
     vertices[3].color.z = blue;

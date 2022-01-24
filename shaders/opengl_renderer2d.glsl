@@ -9,9 +9,11 @@ out vec4 color;
 out float myTexture;
 out vec2 uv;
 
+uniform mat4 projection;
+
 void main()
 {
-    gl_Position = vec4(aPosition, 0.0, 1.0);
+    gl_Position = projection * vec4(aPosition, 0.0, 1.0);
     color = aColor;
     myTexture = aTexture;
     uv = aUV;
