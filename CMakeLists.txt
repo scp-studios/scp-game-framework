@@ -30,7 +30,7 @@ endif()
 find_package(GLFW)
 find_package(OpenGL)
 
-add_library(glad deps/GLAD/src/glad.c)
+add_library(glad deps/glad/src/glad.c)
 
 if (UNIX AND NOT APPLE)
     target_link_libraries(glad dl)
@@ -39,7 +39,7 @@ endif()
 include_directories(
     ${CMAKE_SOURCE_DIR}/include 
     ${GLFW_INCLUDE_DIR} 
-    ${CMAKE_SOURCE_DIR}/deps/GLAD/include
+    ${CMAKE_SOURCE_DIR}/deps/glad/include
     ${CMAKE_SOURCE_DIR}/deps/stb
 )
 
