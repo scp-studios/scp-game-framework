@@ -109,11 +109,11 @@ Texture2D::Texture2D(Texture2D& src)
     glBindTexture(GL_TEXTURE_2D, src.m_handle);
     
     int32_t width = 0;
-    glGetTextureParameteriv(GL_TEXTURE_2D, GL_TEXTURE_WIDTH, &width);
+    glGetTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_WIDTH, &width);
     int32_t height = 0;
-    glGetTextureParameteriv(GL_TEXTURE_2D, GL_TEXTURE_HEIGHT, &height);
+    glGetTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_HEIGHT, &height);
     int32_t depth = 0;
-    glGetTextureParameteriv(GL_TEXTURE_2D, GL_TEXTURE_DEPTH, &depth);
+    glGetTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_DEPTH, &depth);
     
     glGenTextures(1, &m_handle);
     glBindTexture(GL_TEXTURE_2D, m_handle);
