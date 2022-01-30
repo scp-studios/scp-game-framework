@@ -24,11 +24,14 @@ namespace scp::graphics
         math::Vector3<float> orientation;
         math::Vector2<float> scale;
         
+        // The texture coordinates
+        std::array<math::Vector2<float>, 4> uv;
+        
         // Notice that the texture is referred to by it's texture unit, rather
         // than by a name. This might cause some problems in the future, but 
         // for now it's good enough.
         uint16_t texture;
-    }
+    };
 }
 
 #endif /* A4289B83_DC98_4959_8E27_4BE30C685F5E */
