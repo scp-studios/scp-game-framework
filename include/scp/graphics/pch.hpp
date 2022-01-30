@@ -4,6 +4,7 @@
 #include <string_view>
 #include <glad/glad.h>
 #include <vector>
+#include <array>
 #include <scp/graphics/API.hpp>
 #include <scp/math/Matrix4.hpp>
 
