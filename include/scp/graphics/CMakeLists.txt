@@ -5,6 +5,7 @@ target_sources(
     opengl.hpp
     pch.hpp
     Renderer2D.hpp
+    Sprite.hpp
     VertexLayout.hpp
 )
 
