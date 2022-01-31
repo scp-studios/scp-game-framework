@@ -27,9 +27,9 @@ else()
     add_compile_options(-Wall -Wextra -pedantic)
 endif()
 
-if (CMAKE_CXX_COMPILER_ID EQUAL "Clang")
-    add_compile_options(-fdiagnostics-print-absolute)
-    add_link_options(-fdiagnostics-print-absolute)
+if (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
+    add_compile_options(-fdiagnostics-absolute-paths)
+    add_link_options(-fdiagnostics-absolute-paths)
 endif()
 
 find_package(GLFW)
