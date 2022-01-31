@@ -27,6 +27,11 @@ else()
     add_compile_options(-Wall -Wextra -pedantic)
 endif()
 
+if (CMAKE_CXX_COMPILER_ID EQUAL "Clang")
+    add_compile_options(-fdiagnostics-print-absolute)
+    add_link_options(-fdiagnostics-print-absolute)
+endif()
+
 find_package(GLFW)
 find_package(OpenGL)
 
