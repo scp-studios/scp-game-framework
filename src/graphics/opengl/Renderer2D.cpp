@@ -5,6 +5,7 @@
 #include <scp/graphics/opengl/Renderer2D.hpp>
 
 #include <scp/graphics/VertexLayout.hpp>
+#include <scp/graphics/Sprite.hpp>
 
 #include <scp/math.hpp>
 #include <scp/math/projections.hpp>
@@ -219,6 +220,11 @@ void Renderer2D::drawSolidColoredQuadImpl(float width, float height, float posX,
     m_indexBufferOffset += 6 * sizeof(uint32_t);
     m_indexOffset += 6;
     m_vertexOffset += 4;
+}
+
+void Renderer2D::drawSpriteImpl(const Sprite& p_sprite)
+{
+    std::vector<Vertex> vertices(4);
 }
 
 void Renderer2D::endImpl()

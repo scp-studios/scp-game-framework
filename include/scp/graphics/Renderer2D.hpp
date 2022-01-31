@@ -7,6 +7,9 @@
 
 namespace scp::graphics
 {
+    // Forward declaration of the sprite struct
+    struct Sprite;
+    
     // A basic 2D renderer for now. I will add more stuff later on.
     class Renderer2D
     {
@@ -30,6 +33,9 @@ namespace scp::graphics
         // Render a textureless quad
         void drawSolidColoredQuad(float width, float height, float posX, float posY, float red, float green, float blue, float alpha);
         
+        // Render a sprite. Simple. But the implementation? Not so much.
+        void drawSprite(const Sprite& sprite);
+        
         // Stop rendering
         void end();
         
@@ -43,6 +49,7 @@ namespace scp::graphics
         virtual void beginImpl() {}
         virtual void drawTexturedQuadImpl(float width, float height, float posX, float posY, float uvRight, float uvLeft, float uvTop, float uvBottom, int8_t texture) {}
         virtual void drawSolidColoredQuadImpl(float width, float height, float posX, float posY, float red, float green, float blue, float alpha) {}
+        virtual void drawSpriteImpl(const Sprite& sprite) {}
         virtual void endImpl() {}
         
         // The actual implementation of the renderer

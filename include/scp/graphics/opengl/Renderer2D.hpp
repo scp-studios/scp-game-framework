@@ -34,6 +34,9 @@ namespace scp::graphics::opengl
         // Draw a solid colored quad
         void drawSolidColoredQuadImpl(float width, float height, float posX, float posY, float red, float green, float blue, float alpha) override;
         
+        // Draw a sprite
+        void drawSpriteImpl(const Sprite& sprite) override;
+        
         // Stop drawing
         void endImpl() override;
         

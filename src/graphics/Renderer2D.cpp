@@ -1,4 +1,5 @@
 #include <scp/graphics/opengl/Renderer2D.hpp>
+#include <scp/graphics/Sprite.hpp>
 
 #include <scp/graphics/Renderer2D.hpp>
 
@@ -38,6 +39,11 @@ void Renderer2D::drawTexturedQuad(float width, float height, float posX, float p
 void Renderer2D::drawSolidColoredQuad(float width, float height, float posX, float posY, float red, float green, float blue, float alpha)
 {
     m_implementation->drawSolidColoredQuadImpl(width, height, posX, posY, red, green, blue, alpha);
+}
+
+void Renderer2D::drawSprite(const Sprite& sprite)
+{
+    m_implementation->drawSpriteImpl(sprite);
 }
 
 void Renderer2D::end()
