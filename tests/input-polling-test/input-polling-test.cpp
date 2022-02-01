@@ -14,7 +14,7 @@ public:
         
     }
     
-    void onUpdate() override
+    void onUpdate(double deltaTime) override
     {
         if (input.isKeyDown(GLFW_KEY_K))
         {
@@ -52,7 +52,7 @@ public:
         
         while (window.isOpen())
         {
-            Scene::updateActive();
+            Scene::updateActive(0.0);
             Scene::renderActive();
             
             window.update();

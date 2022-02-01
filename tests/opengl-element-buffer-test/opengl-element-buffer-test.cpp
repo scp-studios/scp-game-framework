@@ -61,7 +61,7 @@ public:
         shader = Shader(shaderSource, "../shaders/opengl-graphics-test.glsl");
     }
     
-    void onUpdate() override
+    void onUpdate(double deltaTime) override
     {
         
     }
@@ -104,7 +104,7 @@ public:
         
         while (window.isOpen())
         {
-            Scene::updateActive();
+            Scene::updateActive(0.0);
             
             glClear(GL_COLOR_BUFFER_BIT);
             

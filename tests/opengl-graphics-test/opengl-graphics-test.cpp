@@ -45,7 +45,7 @@ public:
         vertexArray.addAttribute(0, vertexBuffer, vertexLayout);
     }
     
-    void onUpdate() override
+    void onUpdate(double deltaTime) override
     {
         
     }
@@ -83,7 +83,7 @@ public:
         
         while (window.isOpen())
         {
-            Scene::updateActive();
+            Scene::updateActive(0.0);
             
             glClear(GL_COLOR_BUFFER_BIT);
             

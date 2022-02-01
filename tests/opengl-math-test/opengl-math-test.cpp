@@ -67,7 +67,7 @@ public:
         shader = Shader(shaderSource, "../shaders/opengl-math-test.glsl");
     }
     
-    void onUpdate() override
+    void onUpdate(double p_deltaTime) override
     {
         if (Input.isKeyDown(GLFW_KEY_RIGHT))
         {
@@ -124,7 +124,7 @@ public:
         {
             double startTime = glfwGetTime();
             
-            Scene::updateActive();
+            Scene::updateActive(0.0);
             
             Scene::renderActive();
             

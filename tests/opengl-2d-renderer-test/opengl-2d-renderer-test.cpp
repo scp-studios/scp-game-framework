@@ -59,24 +59,24 @@ public:
         thing2.applyTransforms();
     }
     
-    void onUpdate() override
+    void onUpdate(double deltaTime) override
     {
         if (Input.isKeyDown(GLFW_KEY_UP))
         {
-            thing1.position.y -= 2.5f;
+            thing1.position.y -= 50.0f * deltaTime;
         }
         if (Input.isKeyDown(GLFW_KEY_DOWN))
         {
-            thing1.position.y += 2.5f;
+            thing1.position.y += 50.0f * deltaTime;
         }
         
         if (Input.isKeyDown(GLFW_KEY_W))
         {
-            thing2.position.y -= 2.5f;
+            thing2.position.y -= 50.0f * deltaTime;
         }
         if (Input.isKeyDown(GLFW_KEY_S))
         {
-            thing2.position.y += 2.5f;
+            thing2.position.y += 50.0f * deltaTime;
         }
         
         thing1.applyTransforms();
@@ -120,13 +120,19 @@ public:
         
         Scene::setActive<MyScene>();
         
-        window.show();
-        
         glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+        
+        lastFrame = 0.0;
+        
+        window.show();
         
         while (window.isOpen())
         {
-            Scene::updateActive();
+            double currentFrame = glfwGetTime();
+            double deltaTime = currentFrame - lastFrame;
+            lastFrame = currentFrame;
+            
+            Scene::updateActive(deltaTime);
             
             glClear(GL_COLOR_BUFFER_BIT);
             
@@ -142,6 +148,9 @@ public:
     }
 private:
     Window& window;
+    
+    // The time of the last frame.
+    double lastFrame;
 };
 
 //#endif
