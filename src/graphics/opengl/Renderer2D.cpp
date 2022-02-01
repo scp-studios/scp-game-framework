@@ -29,6 +29,19 @@ struct Vertex
     float texture;
 };
 
+static inline std::vector<uint32_t> generateIndices(uint32_t vertexOffset)
+{
+    std::vector<uint32_t> indices(6);
+    indices[0] = vertexOffset + 0;
+    indices[1] = vertexOffset + 1;
+    indices[2] = vertexOffset + 2;
+    indices[3] = vertexOffset + 0;
+    indices[4] = vertexOffset + 3;
+    indices[5] = vertexOffset + 2;
+    
+    return indices;
+}
+
 Renderer2D::Renderer2D(std::string_view shaderSource):
     m_shader(shaderSource, "2D renderer shader"),
     m_vertexArray(),
@@ -144,13 +157,7 @@ void Renderer2D::drawTexturedQuadImpl(float width, float height, float posX, flo
     vertices[3].uv.y = uvTop;
     vertices[3].texture = texture;
     
-    std::vector<uint32_t> indices(6);
-    indices[0] = m_vertexOffset + 0;
-    indices[1] = m_vertexOffset + 1;
-    indices[2] = m_vertexOffset + 2;
-    indices[3] = m_vertexOffset + 0;
-    indices[4] = m_vertexOffset + 3;
-    indices[5] = m_vertexOffset + 2;
+    std::vector<uint32_t> indices = generateIndices(m_vertexOffset);
     
     m_vertexBuffer.setSubData(vertices, m_bufferOffset);
     m_elementBuffer.setSubData(indices, m_indexBufferOffset);
@@ -205,13 +212,7 @@ void Renderer2D::drawSolidColoredQuadImpl(float width, float height, float posX,
     vertices[3].uv.y = 0;
     vertices[3].texture = -1;
     
-    std::vector<uint32_t> indices(6);
-    indices[0] = m_vertexOffset + 0;
-    indices[1] = m_vertexOffset + 1;
-    indices[2] = m_vertexOffset + 2;
-    indices[3] = m_vertexOffset + 0;
-    indices[4] = m_vertexOffset + 3;
-    indices[5] = m_vertexOffset + 2;
+    std::vector<uint32_t> indices = generateIndices(m_vertexOffset);
     
     m_vertexBuffer.setSubData(vertices, m_bufferOffset);
     m_elementBuffer.setSubData(indices, m_indexBufferOffset);
@@ -225,6 +226,26 @@ void Renderer2D::drawSolidColoredQuadImpl(float width, float height, float posX,
 void Renderer2D::drawSpriteImpl(const Sprite& p_sprite)
 {
     std::vector<Vertex> vertices(4);
+    
+    vertices[0].position = Vector2<float>(p_sprite.matrix * Vector4<float>(1.0f, 0.0f));
+    vertices[1].position = Vector2<float>(p_sprite.matrix * Vector4<float>(1.0f, 1.0f));
+    vertices[2].position = Vector2<float>(p_sprite.matrix * Vector4<float>(0.0f, 1.0f));
+    vertices[3].position = Vector2<float>(p_sprite.matrix * Vector4<float>(0.0f, 0.0f));
+    
+    for (uint8_t i = 0; i < 4; i++)
+    {
+        vertices[i].uv = p_sprite.uv[i];
+        vertices[i].color = p_sprite.baseColor;
+        vertices[i].texture = p_sprite.texture;
+    }
+    
+    m_vertexBuffer.setSubData(vertices, m_bufferOffset);
+    m_elementBuffer.setSubData(generateIndices(m_vertexOffset), m_indexBufferOffset);
+    
+    m_bufferOffset += 4 * sizeof(Vertex);
+    m_indexBufferOffset += 6 * sizeof(uint32_t);
+    m_indexOffset += 6;
+    m_vertexOffset += 4;
 }
 
 void Renderer2D::endImpl()
