@@ -40,7 +40,7 @@ namespace scp::math
         }
         
         // Addition
-        Matrix4 operator+(Matrix4& b)
+        Matrix4 operator+(Matrix4& b) const
         {
             Matrix4<T> result;
             result.m_data[0][0] = m_data[0][0] + b.m_data[0][0];
@@ -67,7 +67,7 @@ namespace scp::math
         }
         
         // Subtraction
-        Matrix4 operator-(Matrix4& b)
+        Matrix4 operator-(Matrix4& b) const
         {
             Matrix4<T> result;
             result.m_data[0][0] = m_data[0][0] - b.m_data[0][0];
@@ -94,7 +94,7 @@ namespace scp::math
         }
         
         // Multiplication
-        Matrix4 operator*(Matrix4& b)
+        Matrix4 operator*(Matrix4& b) const
         {
             Matrix4<T> result;
             result.m_data[0][0] = SCP_MATH_MULTIPLY_MATRIX_4_ROW_COLOMN(0, 0, m_data, b.m_data);
@@ -121,7 +121,7 @@ namespace scp::math
         }
         
         // Multiplication by a Vector
-        Vector4<T> operator*(Vector4<T>& b)
+        Vector4<T> operator*(const Vector4<T>& b) const
         {
             Vector4<T> result;
             result.x = (m_data[0][0] * b.x) + (m_data[0][1] * b.y) + (m_data[0][2] * b.z) + (m_data[0][3] * b.w);
