@@ -5,6 +5,9 @@
 
 namespace scp::math
 {
+    template<typename T>
+    class Vector4;
+    
     template <typename T>
     class Vector2
     {
@@ -21,6 +24,11 @@ namespace scp::math
         }
         
         Vector2(T p_x, T p_y): x(p_x), y(p_y)
+        {
+            
+        }
+        
+        Vector2(Vector4<T> src): x(src.x), y(src.y)
         {
             
         }
