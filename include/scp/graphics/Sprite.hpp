@@ -35,7 +35,7 @@ namespace scp::graphics
         // Notice that the texture is referred to by it's texture unit, rather
         // than by a name. This might cause some problems in the future, but 
         // for now it's good enough.
-        uint16_t texture;
+        int16_t texture;
         
         // Apply the transformations. So far, it only supports applying the tr-
         // anslations and scale transformations, but I will add rotations later
