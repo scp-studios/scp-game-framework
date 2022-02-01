@@ -1,6 +1,8 @@
 #ifndef FE657AE1_59F8_49BF_BC8F_ABC8C7A2A269
 #define FE657AE1_59F8_49BF_BC8F_ABC8C7A2A269
 
+#include "Vector4.hpp"
+
 // Macro for multiplying a specific row and colomn of this matrix.
 #define SCP_MATH_MULTIPLY_MATRIX_4_ROW_COLOMN(r, c, m1, m2) (m1[r][0] * m2[0][c]) + (m1[r][1] * m2[1][c]) + (m1[r][2] * m2[2][c]) + (m1[r][3] * m2[3][c])
 
@@ -114,6 +116,18 @@ namespace scp::math
             result.m_data[3][1] = SCP_MATH_MULTIPLY_MATRIX_4_ROW_COLOMN(3, 1, m_data, b.m_data);
             result.m_data[3][2] = SCP_MATH_MULTIPLY_MATRIX_4_ROW_COLOMN(3, 2, m_data, b.m_data);
             result.m_data[3][3] = SCP_MATH_MULTIPLY_MATRIX_4_ROW_COLOMN(3, 3, m_data, b.m_data);
+            
+            return result;
+        }
+        
+        // Multiplication by a Vector
+        Vector4<T> operator*(Vector4<T>& b)
+        {
+            Vector4<T> result;
+            result.x = (m_data[0][0] * b.x) + (m_data[0][1] * b.y) + (m_data[0][2] * b.z) + (m_data[0][3] * b.w);
+            result.y = (m_data[1][0] * b.x) + (m_data[1][1] * b.y) + (m_data[1][2] * b.z) + (m_data[1][3] * b.w);
+            result.z = (m_data[2][0] * b.x) + (m_data[2][1] * b.y) + (m_data[2][2] * b.z) + (m_data[2][3] * b.w);
+            result.w = (m_data[3][0] * b.x) + (m_data[3][1] * b.y) + (m_data[3][2] * b.z) + (m_data[3][3] * b.w);
             
             return result;
         }
