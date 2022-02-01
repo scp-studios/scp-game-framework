@@ -204,10 +204,10 @@ void Renderer2D::drawSpriteImpl(const Sprite& p_sprite)
 {
     std::vector<Vertex> vertices(4);
     
-    vertices[0].position = Vector2<float>(p_sprite.matrix * Vector4<float>(1.0f, 0.0f));
-    vertices[1].position = Vector2<float>(p_sprite.matrix * Vector4<float>(1.0f, 1.0f));
-    vertices[2].position = Vector2<float>(p_sprite.matrix * Vector4<float>(0.0f, 1.0f));
-    vertices[3].position = Vector2<float>(p_sprite.matrix * Vector4<float>(0.0f, 0.0f));
+    vertices[0].position = Vector2<float>(p_sprite.matrix * Vector4<float>(1.0f, 0.0f, 0.0f, 1.0f));
+    vertices[1].position = Vector2<float>(p_sprite.matrix * Vector4<float>(1.0f, 1.0f, 0.0f, 1.0f));
+    vertices[2].position = Vector2<float>(p_sprite.matrix * Vector4<float>(0.0f, 1.0f, 0.0f, 1.0f));
+    vertices[3].position = Vector2<float>(p_sprite.matrix * Vector4<float>(0.0f, 0.0f, 0.0f, 1.0f));
     
     for (uint8_t i = 0; i < 4; i++)
     {
