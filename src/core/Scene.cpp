@@ -9,9 +9,9 @@ using scp::events::MouseButtonEvent;
 using scp::events::MouseMoveEvent;
 using scp::events::MouseScrollEvent;
 
-void Scene::updateActive()
+void Scene::updateActive(double deltaTime)
 {
-    activeScene->onUpdate();
+    activeScene->onUpdate(deltaTime);
 }
 
 
@@ -37,7 +37,7 @@ void Scene::renderActive()
 
 
 
-void Scene::onUpdate()
+void Scene::onUpdate(double deltaTime)
 {
     
 }

@@ -33,7 +33,7 @@ namespace scp
         }
         
         // Update the active scene
-        static void updateActive();
+        static void updateActive(double deltaTime);
         
         // Render the active scene
         static void renderActive();
@@ -43,7 +43,7 @@ namespace scp
         
     private:
         // Called every iteration of the update thread
-        virtual void onUpdate();
+        virtual void onUpdate(double deltaTime);
         
         // Rendering
         virtual void render();
