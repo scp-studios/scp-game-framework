@@ -131,31 +131,29 @@ void Renderer2D::drawTexturedQuadImpl(float width, float height, float posX, flo
     
     vertices[0].position.x = posX;
     vertices[0].position.y = posY;
-    vertices[0].color = Vector4(0.0f);
     vertices[0].uv.x = uvRight;
     vertices[0].uv.y = uvTop;
-    vertices[0].texture = texture;
     
     vertices[1].position.x = posX;
     vertices[1].position.y = posY + height;
-    vertices[1].color = Vector4(0.0f);
     vertices[1].uv.x = uvRight;
     vertices[1].uv.y = uvBottom;
-    vertices[1].texture = texture;
     
     vertices[2].position.x = posX + width;
     vertices[2].position.y = posY + height;
-    vertices[2].color = Vector4(0.0f);
     vertices[2].uv.x = uvLeft;
     vertices[2].uv.y = uvBottom;
-    vertices[2].texture = texture;
     
     vertices[3].position.x = posX + width;
     vertices[3].position.y = posY;
-    vertices[3].color = Vector4(0.0f);
     vertices[3].uv.x = uvLeft;
     vertices[3].uv.y = uvTop;
-    vertices[3].texture = texture;
+    
+    for (Vertex& vertex: vertices)
+    {
+        vertex.color = Vector4(0.0f, 0.0f, 0.0f, 0.0f);
+        vertex.texture = texture;
+    }
     
     std::vector<uint32_t> indices = generateIndices(m_vertexOffset);
     
@@ -174,43 +172,22 @@ void Renderer2D::drawSolidColoredQuadImpl(float width, float height, float posX,
     
     vertices[0].position.x = posX;
     vertices[0].position.y = posY;
-    vertices[0].color.x = red;
-    vertices[0].color.y = green;
-    vertices[0].color.z = blue;
-    vertices[0].color.w = alpha;
-    vertices[0].uv.x = 0;
-    vertices[0].uv.y = 0;
-    vertices[0].texture = -1;
     
     vertices[1].position.x = posX;
     vertices[1].position.y = posY + height;
-    vertices[1].color.x = red;
-    vertices[1].color.y = green;
-    vertices[1].color.z = blue;
-    vertices[1].color.w = alpha;
-    vertices[1].uv.x = 0;
-    vertices[1].uv.y = 0;
-    vertices[1].texture = -1;
     
     vertices[2].position.x = posX + width;
     vertices[2].position.y = posY + height;
-    vertices[2].color.x = red;
-    vertices[2].color.y = green;
-    vertices[2].color.z = blue;
-    vertices[2].color.w = alpha;
-    vertices[2].uv.x = 0;
-    vertices[2].uv.y = 0;
-    vertices[2].texture = -1;
     
     vertices[3].position.x = posX + width;
     vertices[3].position.y = posY;
-    vertices[3].color.x = red;
-    vertices[3].color.y = green;
-    vertices[3].color.z = blue;
-    vertices[3].color.w = alpha;
-    vertices[3].uv.x = 0;
-    vertices[3].uv.y = 0;
-    vertices[3].texture = -1;
+    
+    for (Vertex& vertex: vertices)
+    {
+        vertex.color = Vector4(red, green, blue, alpha);
+        vertex.uv = Vector2(0.0f, 0.0f);
+        vertex.texture = -1.0f;
+    }
     
     std::vector<uint32_t> indices = generateIndices(m_vertexOffset);
     
