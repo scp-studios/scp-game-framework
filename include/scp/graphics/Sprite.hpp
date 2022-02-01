@@ -24,6 +24,11 @@ namespace scp::graphics
         math::Vector3<float> orientation;
         math::Vector2<float> scale;
         
+        // The base color, which is additively blended onto the texture, depen-
+        // ding on the shader used. So, if you only want to have a texture, wi-
+        // th no base color, set this to black.
+        math::Vector4<float> baseColor;
+        
         // The texture coordinates
         std::array<math::Vector2<float>, 4> uv;
         
