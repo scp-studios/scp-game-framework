@@ -3,6 +3,7 @@ target_sources(
     
     opengl.cpp
     Renderer2D.cpp
+    Sprite.cpp
 )
 
 add_subdirectory(opengl)

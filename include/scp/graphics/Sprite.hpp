@@ -36,6 +36,14 @@ namespace scp::graphics
         // than by a name. This might cause some problems in the future, but 
         // for now it's good enough.
         uint16_t texture;
+        
+        // Apply the transformations. So far, it only supports applying the tr-
+        // anslations and scale transformations, but I will add rotations later
+        // on.
+        // 
+        // Note: You have to apply the transformations before it will show up -
+        // on screen.
+        void applyTransforms();
     };
 }
 
