@@ -14,19 +14,9 @@ AxisAlignedBoxCollider::AxisAlignedBoxCollider(uint16_t right, uint16_t left, ui
 
 bool AxisAlignedBoxCollider::hasCollidedWith(const AxisAlignedBoxCollider& other) const
 {
-    return (
-        (
-            (m_bottom >= other.m_top && m_bottom <= other.m_bottom) 
-            || 
-            (m_top <= other.m_bottom && m_top >= other.m_top)
-        )
-        &&
-        (
-            (m_left <= other.m_right && m_left >= other.m_left)
-            ||
-            (m_right >= other.m_left && m_right <= other.m_right)
-        )
-    );
+    bool collisionOnX = ((other.m_left <= m_left) && (m_left <= other.m_right)) || ((m_left <= other.m_left) && (other.m_left <= m_right));
+    bool collisionOnY = ((other.m_top <= m_top) && (m_top <= other.m_bottom)) || ((m_top <= other.m_top) && (other.m_top <= m_bottom));
+    return collisionOnX && collisionOnY;
 }
 
 void AxisAlignedBoxCollider::move(double x, double y)
