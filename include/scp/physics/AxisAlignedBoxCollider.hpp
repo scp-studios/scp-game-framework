@@ -20,6 +20,8 @@ namespace scp::physics
         
         void move(uint16_t x, uint16_t y);
         
+        std::string getName() const;
+        
     private:
         uint16_t m_right;
         uint16_t m_left;
