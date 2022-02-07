@@ -1,6 +1,8 @@
 #ifndef AE069409_165F_4668_B9FE_27666A88ACE4
 #define AE069409_165F_4668_B9FE_27666A88ACE4
 
+#include "pch.hpp"
+
 namespace scp::physics
 {
     class AxisAlignedBoxCollider
