@@ -67,45 +67,47 @@ public:
     
     void onUpdate(double deltaTime) override
     {
+        const double speed = 200.0;
+        
         if (Input.isKeyDown(GLFW_KEY_UP))
         {
-            thing1.position.y -= 50.0f * deltaTime;
+            thing1.position.y -= speed * deltaTime;
             thing1Collider.moveAlongY(-50.0 * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_DOWN))
         {
-            thing1.position.y += 50.0f * deltaTime;
+            thing1.position.y += speed * deltaTime;
             thing1Collider.moveAlongY(50.0 * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_LEFT))
         {
-            thing1.position.x -= 50.0f * deltaTime;
+            thing1.position.x -= speed * deltaTime;
             thing1Collider.moveAlongX(-50.0 * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_RIGHT))
         {
-            thing1.position.x += 50.0f * deltaTime;
+            thing1.position.x += speed * deltaTime;
             thing1Collider.moveAlongX(50.0 * deltaTime);
         }
         
         if (Input.isKeyDown(GLFW_KEY_W))
         {
-            thing2.position.y -= 50.0f * deltaTime;
+            thing2.position.y -= speed * deltaTime;
             thing2Collider.moveAlongY(-50.0 * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_S))
         {
-            thing2.position.y += 50.0f * deltaTime;
+            thing2.position.y += speed * deltaTime;
             thing2Collider.moveAlongY(50.0 * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_A))
         {
-            thing2.position.x -= 50.0f * deltaTime;
+            thing2.position.x -= speed * deltaTime;
             thing2Collider.moveAlongX(-50.0 * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_D))
         {
-            thing2.position.x += 50.0f * deltaTime;
+            thing2.position.x += speed * deltaTime;
             thing2Collider.moveAlongX(50.0 * deltaTime);
         }
         
