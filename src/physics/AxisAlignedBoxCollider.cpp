@@ -37,6 +37,18 @@ void AxisAlignedBoxCollider::move(double x, double y)
     m_bottom += y;
 }
 
+void AxisAlignedBoxCollider::moveAlongY(double s)
+{
+    m_top += s;
+    m_bottom += s;
+}
+
+void AxisAlignedBoxCollider::moveAlongX(double s)
+{
+    m_right += s;
+    m_left += s;
+}
+
 std::string AxisAlignedBoxCollider::getName() const
 {
     return m_name;

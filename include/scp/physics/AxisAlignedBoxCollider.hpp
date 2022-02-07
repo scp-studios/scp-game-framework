@@ -20,6 +20,12 @@ namespace scp::physics
         
         void move(double x, double y);
         
+        // Alter the Y position
+        void moveAlongY(double s);
+        
+        // Alter the X position
+        void moveAlongX(double s);
+        
         std::string getName() const;
         
     private:
