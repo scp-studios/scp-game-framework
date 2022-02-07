@@ -29,7 +29,7 @@ bool AxisAlignedBoxCollider::hasCollidedWith(const AxisAlignedBoxCollider& other
     );
 }
 
-void AxisAlignedBoxCollider::move(uint16_t x, uint16_t y)
+void AxisAlignedBoxCollider::move(double x, double y)
 {
     m_right += x;
     m_left += x;

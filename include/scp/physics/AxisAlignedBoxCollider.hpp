@@ -18,15 +18,15 @@ namespace scp::physics
         
         bool hasCollidedWith(const AxisAlignedBoxCollider& other) const;
         
-        void move(uint16_t x, uint16_t y);
+        void move(double x, double y);
         
         std::string getName() const;
         
     private:
-        uint16_t m_right;
-        uint16_t m_left;
-        uint16_t m_top;
-        uint16_t m_bottom;
+        double m_right;
+        double m_left;
+        double m_top;
+        double m_bottom;
         
         std::string m_name;
     };
