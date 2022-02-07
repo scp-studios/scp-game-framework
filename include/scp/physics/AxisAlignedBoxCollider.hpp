@@ -12,7 +12,8 @@ namespace scp::physics
             uint16_t right = 100, 
             uint16_t left = 0, 
             uint16_t top = 0, 
-            uint16_t bottom = 100
+            uint16_t bottom = 100,
+            std::string_view name = "Axis Aligned Box Collider"
         );
         
         bool hasCollidedWith(const AxisAlignedBoxCollider& other) const;
@@ -24,6 +25,8 @@ namespace scp::physics
         uint16_t m_left;
         uint16_t m_top;
         uint16_t m_bottom;
+        
+        std::string m_name;
     };
 }
 
