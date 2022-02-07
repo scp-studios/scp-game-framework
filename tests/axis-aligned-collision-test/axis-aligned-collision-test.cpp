@@ -72,48 +72,48 @@ public:
         if (Input.isKeyDown(GLFW_KEY_UP))
         {
             thing1.position.y -= speed * deltaTime;
-            thing1Collider.moveAlongY(-50.0 * deltaTime);
+            thing1Collider.moveAlongY(-speed * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_DOWN))
         {
             thing1.position.y += speed * deltaTime;
-            thing1Collider.moveAlongY(50.0 * deltaTime);
+            thing1Collider.moveAlongY(speed * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_LEFT))
         {
             thing1.position.x -= speed * deltaTime;
-            thing1Collider.moveAlongX(-50.0 * deltaTime);
+            thing1Collider.moveAlongX(-speed * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_RIGHT))
         {
             thing1.position.x += speed * deltaTime;
-            thing1Collider.moveAlongX(50.0 * deltaTime);
+            thing1Collider.moveAlongX(speed * deltaTime);
         }
         
         if (Input.isKeyDown(GLFW_KEY_W))
         {
             thing2.position.y -= speed * deltaTime;
-            thing2Collider.moveAlongY(-50.0 * deltaTime);
+            thing2Collider.moveAlongY(-speed * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_S))
         {
             thing2.position.y += speed * deltaTime;
-            thing2Collider.moveAlongY(50.0 * deltaTime);
+            thing2Collider.moveAlongY(speed * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_A))
         {
             thing2.position.x -= speed * deltaTime;
-            thing2Collider.moveAlongX(-50.0 * deltaTime);
+            thing2Collider.moveAlongX(-speed * deltaTime);
         }
         if (Input.isKeyDown(GLFW_KEY_D))
         {
             thing2.position.x += speed * deltaTime;
-            thing2Collider.moveAlongX(50.0 * deltaTime);
+            thing2Collider.moveAlongX(speed * deltaTime);
         }
         
         if (thing2Collider.hasCollidedWith(thing1Collider))
         {
-            thing2.baseColor = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+            thing2.baseColor = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
         }
         else 
         {
