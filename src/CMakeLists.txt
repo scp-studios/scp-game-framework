@@ -1,5 +1,6 @@
 add_subdirectory(core)
 add_subdirectory(graphics)
-add_subdirectory(utils)
 add_subdirectory(math)
 add_subdirectory(physics)
+add_subdirectory(ui)
+add_subdirectory(utils)

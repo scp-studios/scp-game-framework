@@ -53,6 +53,7 @@ add_library(scp-game-framework-graphics)
 add_library(scp-game-framework-utils)
 add_library(scp-game-framework-math)
 add_library(scp-game-framework-physics)
+add_library(scp-game-framework-ui)
 
 target_link_libraries(scp-game-framework-core GLFW::GLFW glad scp-game-framework-graphics)
 target_link_libraries(scp-game-framework-graphics glad scp-game-framework-utils)
