@@ -1,1 +1,1 @@
-add_executable(dummy-test dummy-test.cpp)
+add_executable(test-dummy dummy-test.cpp)

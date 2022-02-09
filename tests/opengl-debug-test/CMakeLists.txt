@@ -1,6 +1,6 @@
-add_executable(opengl-debug-test opengl-debug-test.cpp)
+add_executable(test-opengl-debug opengl-debug-test.cpp)
 target_link_libraries(
-    opengl-debug-test
+    test-opengl-debug
     scp-game-framework-core
     scp-game-framework-graphics
 )

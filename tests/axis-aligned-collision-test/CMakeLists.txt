@@ -1,6 +1,6 @@
-add_executable("axis-aligned-collision-test" "axis-aligned-collision-test.cpp")
+add_executable("test-axis-aligned-collision" "axis-aligned-collision-test.cpp")
 target_link_libraries(
-    "axis-aligned-collision-test"
+    "test-axis-aligned-collision"
     
     "scp-game-framework-core"
     "scp-game-framework-graphics"

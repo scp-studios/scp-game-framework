@@ -1,6 +1,6 @@
-add_executable(opengl-2d-renderer-test opengl-2d-renderer-test.cpp)
+add_executable(test-opengl-2d-renderer opengl-2d-renderer-test.cpp)
 target_link_libraries(
-    opengl-2d-renderer-test
+    test-opengl-2d-renderer
     
     scp-game-framework-core
     scp-game-framework-graphics

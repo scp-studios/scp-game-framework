@@ -1,2 +1,2 @@
-add_executable(event-test event-test.cpp)
-target_link_libraries(event-test scp-game-framework-core)
+add_executable(test-event event-test.cpp)
+target_link_libraries(test-event scp-game-framework-core)

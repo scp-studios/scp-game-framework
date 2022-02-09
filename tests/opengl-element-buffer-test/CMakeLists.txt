@@ -1,6 +1,6 @@
-add_executable(opengl-element-buffer-test opengl-element-buffer-test.cpp)
+add_executable(test-opengl-element-buffer opengl-element-buffer-test.cpp)
 target_link_libraries(
-    opengl-element-buffer-test
+    test-opengl-element-buffer
     
     scp-game-framework-core
     scp-game-framework-graphics
