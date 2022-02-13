@@ -10,8 +10,12 @@
 
 namespace stdfs = std::filesystem;
 
+// Unused argument suppressor
+#define UNUSED_ARG(x) (void)x
+
 // Simple function to put all of the command line arguments into a single vect-
 // or of strings, which is easier to work with.
+#if 0
 static std::vector<std::string> preprocessCommandLineArguments(int argc, char** argv)
 {
     std::vector<std::string> result(argc);
@@ -23,7 +27,26 @@ static std::vector<std::string> preprocessCommandLineArguments(int argc, char** 
     
     return result;
 }
+#endif
 
+static std::vector<std::string> splitString(std::string_view host, std::string_view separator)
+{
+    std::vector<std::string> result;
+    
+    size_t start = 0;
+    size_t end = host.find(separator, start);
+    
+    while (end != std::string::npos)
+    {
+        result.push_back(std::string(host.substr(start, end - start)));
+        start = end + separator.length();
+        end = host.find(separator, start);
+    }
+    
+    result.push_back(std::string(host.substr(start)));
+    
+    return result;
+}
 
 // Obtain the files within the target directory.
 static std::vector<std::string> getFiles(std::string_view directory, bool recursive)
@@ -35,62 +58,84 @@ static std::vector<std::string> getFiles(std::string_view directory, bool recurs
         
         if (recursive && file.is_directory())
         {
-            std::vector<std::string> neng = getFiles(file.path().c_str(), recursive);
-            files.insert(files.end(), neng.begin(), neng.end());
+            std::vector<std::string> subdirectoryFiles = getFiles(file.path().c_str(), recursive);
+            files.insert(files.end(), subdirectoryFiles.begin(), subdirectoryFiles.end());
         }
     }
+    
+    return files;
 }
 
 int main(int argc, char** argv)
 {
-    // Get the arguments into a vector
-    auto args = preprocessCommandLineArguments(argc, argv);
+    // We are not using these arguments yet.
+    UNUSED_ARG(argc);
+    UNUSED_ARG(argv);
     
-    // The directory in which to archive. By default, it is "."
-    std::string targetDir = ".";
+    // I'll use command line arguments later. For now, they are just constants.
+    const std::string targetDir = "./assets";
+    const std::string contentOutput = "mardikar.jay";
+    const std::string configOutput = "neng.li";
     
-    // The resulting file to write to.
-    std::string resultFile = "mardikar.jay";
+    // Obtain all of the files within the asset directory.
+    std::vector<std::string> assetFiles = getFiles(targetDir, true);
     
-    // Whether or not to search recursively. By default, this is "yes"
-    bool recursive = true;
-    
-    // What is the next argument?
-    enum class Argument
+    // This file is the file in which we output the content of the assets into.
+    // They will be linked together into a single binary file.
+    std::ofstream contentOutputFile(contentOutput, std::ofstream::binary);
+    if (!contentOutputFile)
     {
-        RESULT, TARGET_DIR
-    };
-    
-    Argument nextArgument = Argument::TARGET_DIR;
-    
-    // Process the command line arguments
-    for (const auto& arg: args)
-    {
-        // Flag to not package recursively
-        if (arg == "--no-recursive")
-        {
-            recursive = false;
-        }
-        else if (arg == "--result")
-        {
-            nextArgument = Argument::TARGET_DIR;
-        }
-        // If it isn't a flag, then it must be the target directory
-        else
-        {
-            if (nextArgument == Argument::TARGET_DIR)
-            {
-                targetDir = arg;
-            }
-            else if (nextArgument == Argument::RESULT)
-            {
-                resultFile = arg;
-            }
-        }
+        std::cerr << "[FATAL ERROR]: Failed to open " << contentOutput << " for writing.\n";
+        return -1;
     }
     
-    // Get all of the files in the target directory
-    std::vector<std::string> files = getFiles(targetDir, recursive);
+    // This is the file in which we output the configuration file. It is where
+    // the reader can then lookup the location of the assets within the content
+    // file.
+    std::ofstream configOutputFile(configOutput);
+    if (!configOutputFile)
+    {
+        std::cerr << "[FATAL ERROR]: Failed to open " << configOutput << "for writing.\n";
+        return -2;
+    }
     
-    // Open the result file.
+    // We need to keep track of where the file is.
+    uint32_t startingMarker = 0;
+    uint32_t endingMarker = 0;
+    
+    // We iterate through all of the assets.
+    for (const auto& asset: assetFiles)
+    {
+        // At the start of each iteration, the starting marker is set to the p-
+        // oint in which the last file ends.
+        startingMarker = endingMarker;
+        
+        // We open the asset file for reading in binary mode.
+        std::ifstream file(asset, std::ifstream::binary);
+        if (!file)
+        {
+            std::cerr << "[WARNING]: Skipping " << asset << " due to an error in opening the file.\n";
+            continue;
+        }
+        
+        // Next, we iterate through the whole file.
+        while (file)
+        {
+            // Read a character
+            char character;
+            file.read(&character, 1);
+            
+            // Push that character to the content file.
+            contentOutputFile.write(&character, 1);
+            
+            // Increase the ending marker.
+            endingMarker++;
+        }
+        
+        // Finally, we add an entry in the configuration file
+        configOutputFile << asset << ":" << startingMarker << ":" << endingMarker << "\n";
+    }
+    
+    // Okay, now we're done.
+    return 0;
 }
