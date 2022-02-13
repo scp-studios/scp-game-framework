@@ -1,3 +1,4 @@
+add_subdirectory(asset-archiver)
 add_subdirectory(core)
 add_subdirectory(graphics)
 add_subdirectory(math)
