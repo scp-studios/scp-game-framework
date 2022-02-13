@@ -1,3 +1,5 @@
+#include <sstream>
+
 #include <scp/utils/string_utils.hpp>
 
 namespace string_utils = scp::utils::string_utils;
@@ -18,4 +20,21 @@ bool string_utils::startsWith(std::string_view p_a, std::string_view p_b)
     }
     
     return true;
+}
+
+std::vector<std::string> string_utils::splitString(std::string_view host, char delimiter)
+{
+    std::vector<std::string> result;
+    
+    std::stringstream stream(host.data());
+    
+    while (stream.good())
+    {
+        std::string part;
+        std::getline(stream, part, delimiter);
+        
+        result.push_back(part);
+    }
+    
+    return result;
 }
