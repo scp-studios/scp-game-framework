@@ -5,4 +5,5 @@ target_sources(
     stb_image.c
     file-utils.cpp
     string_utils.cpp
+    "time-utils.cpp"
 )

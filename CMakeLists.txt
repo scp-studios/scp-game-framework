@@ -57,6 +57,7 @@ add_library(scp-game-framework-ui)
 
 target_link_libraries(scp-game-framework-core GLFW::GLFW glad scp-game-framework-graphics)
 target_link_libraries(scp-game-framework-graphics glad scp-game-framework-utils)
+target_link_libraries("scp-game-framework-utils" "GLFW::GLFW")
 
 if (UNIX)
     # Unix stuff
