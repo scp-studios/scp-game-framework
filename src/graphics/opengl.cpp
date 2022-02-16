@@ -115,3 +115,23 @@ void scp::graphics::opengl::enable2DBlending()
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 }
+
+void scp::graphics::opengl::setClearColor(float red, float green, float blue, float alpha)
+{
+    glClearColor(red, green, blue, alpha);
+}
+
+void scp::graphics::opengl::clearColor()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void scp::graphics::opengl::clearColorAndDepth()
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void scp::graphics::opengl::clearAll()
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+}

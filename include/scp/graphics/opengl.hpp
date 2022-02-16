@@ -8,6 +8,14 @@ namespace scp::graphics
         void enableContextDebugging();
         
         void enable2DBlending();
+        
+        void setClearColor(float red, float green, float blue, float alpha);
+        
+        void clearColor();
+        
+        void clearColorAndDepth();
+        
+        void clearAll();
     }
 }
 
