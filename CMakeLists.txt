@@ -48,12 +48,32 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/deps/stb
 )
 
+# For defining the windows export symbols
+function("define_symbols" "target")
+    if (WIN32 AND BUILD_SHARED_LIBS)
+        target_compile_definitions("${target}" PRIVATE "SCP_BUILD_WINDOWS_DLL")
+    endif()
+endfunction()
+
+function("define_test_symbols" "target")
+    if (WIN32 AND BUILD_SHARED_LIBS)
+        target_compile_definitions("${target}" PRIVATE "SCP_LINK_WINDOWS_DLL")
+    endif()
+endfunction()
+
 add_library(scp-game-framework-core)
 add_library(scp-game-framework-graphics)
 add_library(scp-game-framework-utils)
 add_library(scp-game-framework-math)
 add_library(scp-game-framework-physics)
 add_library(scp-game-framework-ui)
+
+define_symbols(scp-game-framework-core)
+define_symbols(scp-game-framework-graphics)
+define_symbols(scp-game-framework-utils)
+define_symbols(scp-game-framework-math)
+define_symbols(scp-game-framework-physics)
+define_symbols(scp-game-framework-ui)
 
 target_link_libraries(scp-game-framework-core GLFW::GLFW glad scp-game-framework-graphics)
 target_link_libraries(scp-game-framework-graphics glad scp-game-framework-utils)

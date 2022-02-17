@@ -6,6 +6,7 @@ target_sources(
     Input.hpp
     math.hpp
     Scene.hpp
+    scp.hpp
     Window.hpp
 )
 
