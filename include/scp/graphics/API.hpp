@@ -1,6 +1,8 @@
 #ifndef A35F0D22_56E4_4F86_82CF_11D129B9BAFE
 #define A35F0D22_56E4_4F86_82CF_11D129B9BAFE
 
+#include <scp/scp.hpp>
+
 namespace scp::graphics
 {
     SCPGFFUNC enum class API
