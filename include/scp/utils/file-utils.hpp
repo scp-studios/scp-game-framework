@@ -5,11 +5,13 @@
 
 #include "pch.hpp"
 
+#include <scp/scp.hpp>
+
 namespace scp::utils
 {
-    SCPGFFUNC namespace file_utils
+    namespace file_utils
     {
-        SCPGFFUNC std::string loadAsString(std::string_view path);
+        std::string  SCPGFFUNC  loadAsString(std::string_view path);
     }
 }
 

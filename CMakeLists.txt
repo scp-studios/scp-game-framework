@@ -36,6 +36,7 @@ find_package(GLFW)
 find_package(OpenGL)
 
 add_library(glad deps/glad/src/glad.c)
+target_compile_definitions(glad PRIVATE GLAD_GLAPI_EXPORT_BUILD GLAD_GLAPI_EXPORT)
 
 if (UNIX AND NOT APPLE)
     target_link_libraries(glad dl)
@@ -51,13 +52,23 @@ include_directories(
 # For defining the windows export symbols
 function("define_symbols" "target")
     if (WIN32 AND BUILD_SHARED_LIBS)
-        target_compile_definitions("${target}" PRIVATE "SCP_BUILD_WINDOWS_DLL")
+        target_compile_definitions(
+            "${target}" PRIVATE 
+            
+            "SCP_BUILD_WINDOWS_DLL"
+            "GLAD_GLAPI_EXPORT"
+        )
     endif()
 endfunction()
 
 function("define_test_symbols" "target")
     if (WIN32 AND BUILD_SHARED_LIBS)
-        target_compile_definitions("${target}" PRIVATE "SCP_LINK_WINDOWS_DLL")
+        target_compile_definitions(
+            "${target}" PRIVATE 
+            
+            "SCP_LINK_WINDOWS_DLL"
+            "GLAD_GLAPI_EXPORT"
+        )
     endif()
 endfunction()
 
@@ -68,6 +79,8 @@ add_library(scp-game-framework-math)
 add_library(scp-game-framework-physics)
 add_library(scp-game-framework-ui)
 
+add_library("stb" STATIC)
+
 define_symbols(scp-game-framework-core)
 define_symbols(scp-game-framework-graphics)
 define_symbols(scp-game-framework-utils)
@@ -75,9 +88,10 @@ define_symbols(scp-game-framework-math)
 define_symbols(scp-game-framework-physics)
 define_symbols(scp-game-framework-ui)
 
-target_link_libraries(scp-game-framework-core GLFW::GLFW glad scp-game-framework-graphics)
-target_link_libraries(scp-game-framework-graphics glad scp-game-framework-utils)
+target_link_libraries(scp-game-framework-core GLFW::GLFW glad)
+target_link_libraries(scp-game-framework-graphics glad stb scp-game-framework-utils scp-game-framework-core)
 target_link_libraries("scp-game-framework-utils" "GLFW::GLFW")
+target_link_libraries(scp-game-framework-ui scp-game-framework-core)
 
 if (UNIX)
     # Unix stuff

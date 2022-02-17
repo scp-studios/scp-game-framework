@@ -13,7 +13,7 @@ namespace scp::utils
         uint32_t end;
     };
 
-    class AssetCollection
+    class SCPGFFUNC AssetCollection
     {
     public:
         // Create an asset collection. Obtain 

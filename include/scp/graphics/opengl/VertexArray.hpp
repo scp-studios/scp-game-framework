@@ -8,7 +8,7 @@
 
 namespace scp::graphics::opengl
 {
-    SCPGFFUNC class VertexArray
+    class SCPGFFUNC  VertexArray
     {
     public:
         VertexArray();

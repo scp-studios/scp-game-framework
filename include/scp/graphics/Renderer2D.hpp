@@ -11,7 +11,7 @@ namespace scp::graphics
     struct Sprite;
     
     // A basic 2D renderer for now. I will add more stuff later on.
-    SCPGFFUNC class Renderer2D
+    class SCPGFFUNC  Renderer2D
     {
     public:
         Renderer2D() = default;

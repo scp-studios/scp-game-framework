@@ -5,7 +5,7 @@
 
 namespace scp::time_utils
 {
-    SCPGFFUNC double getGLFWTime();
+    double SCPGFFUNC  getGLFWTime();
 }
 
 #endif /* D3CADE32_D5EB_4610_AB95_F790BA4B3BFC */

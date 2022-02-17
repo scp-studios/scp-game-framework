@@ -5,7 +5,7 @@
 
 namespace scp::graphics
 {
-    SCPGFFUNC enum class API
+    enum class API
     {
         OpenGL, Vulkan, Direct3D, Direct3D_12, Metal
     };

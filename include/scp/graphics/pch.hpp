@@ -8,6 +8,4 @@
 #include <scp/graphics/API.hpp>
 #include <scp/math/Matrix4.hpp>
 
-#include <scp/scp.hpp>
-
 #endif /* D6E75889_197B_4042_82D9_6721A5CBB554 */

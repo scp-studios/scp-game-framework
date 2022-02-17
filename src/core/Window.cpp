@@ -6,8 +6,6 @@
 
 #include <scp/Window.hpp>
 
-#include <scp/graphics/opengl.hpp>
-
 using scp::Window;
 using scp::graphics::API;
 
@@ -134,11 +132,6 @@ m_graphicsAPI(p_graphicsAPI)
         if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
         {
             throw std::runtime_error("Failed to initialize GLAD.");
-        }
-        
-        if (p_debugging)
-        {
-            graphics::opengl::enableContextDebugging();
         }
 
         // Uncap FPS

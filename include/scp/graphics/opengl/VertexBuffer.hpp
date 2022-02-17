@@ -5,7 +5,7 @@
 
 namespace scp::graphics::opengl
 {
-    SCPGFFUNC class VertexBuffer
+    class SCPGFFUNC  VertexBuffer
     {
     public:
         VertexBuffer() = default;

@@ -13,7 +13,7 @@
 
 namespace scp::graphics::opengl
 {
-    SCPGFFUNC class Renderer2D: public scp::graphics::Renderer2D
+    class SCPGFFUNC  Renderer2D: public scp::graphics::Renderer2D
     {
     public:
         // Basic default constructor for now. I will add more later on.

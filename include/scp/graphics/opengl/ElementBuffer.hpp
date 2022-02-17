@@ -5,7 +5,7 @@
 
 namespace scp::graphics::opengl
 {
-    SCPGFFUNC class ElementBuffer
+    class SCPGFFUNC  ElementBuffer
     {
     public:
         ElementBuffer() = default;

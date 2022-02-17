@@ -9,9 +9,11 @@
 
 #include <scp/events.hpp>
 
+#include <scp/scp.hpp>
+
 namespace scp
 {
-    SCPGFFUNC class Scene
+    class SCPGFFUNC  Scene
     {
     public:
         // The window has to be a friend class in order for it to pass events

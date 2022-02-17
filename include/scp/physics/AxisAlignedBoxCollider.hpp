@@ -3,9 +3,11 @@
 
 #include "pch.hpp"
 
+#include <scp/scp.hpp>
+
 namespace scp::physics
 {
-    SCPGFFUNC class AxisAlignedBoxCollider
+    class SCPGFFUNC  AxisAlignedBoxCollider
     {
     public:
         AxisAlignedBoxCollider(

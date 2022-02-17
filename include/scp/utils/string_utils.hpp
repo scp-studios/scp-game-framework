@@ -3,13 +3,15 @@
 
 #include "pch.hpp"
 
+#include <scp/scp.hpp>
+
 namespace scp::utils
 {
     namespace string_utils
     {
-        SCPGFFUNC bool startsWith(std::string_view a, std::string_view b);
+        bool SCPGFFUNC  startsWith(std::string_view a, std::string_view b);
         
-        SCPGFFUNC std::vector<std::string> splitString(std::string_view host, char delimiter);
+        std::vector<std::string> SCPGFFUNC  splitString(std::string_view host, char delimiter);
     }
 }
 

@@ -8,8 +8,6 @@
 #include <iostream>
 #include <vector>
 
-#include <scp/scp.hpp>
-
 #endif
 
 #endif /* BA5ED3DD_D401_4AE3_B1E2_E070E9ADF1DF */

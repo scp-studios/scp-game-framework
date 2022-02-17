@@ -12,13 +12,13 @@ namespace scp
     
     class Window;
     
-    SCPGFFUNC struct MousePosition
+    struct MousePosition
     {
         double x;
         double y;
     };
     
-    SCPGFFUNC class Input
+    class SCPGFFUNC  Input
     {
     public:
         // Deleted the constructors so that copies can't be made.

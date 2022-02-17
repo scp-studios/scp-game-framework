@@ -13,7 +13,7 @@ namespace scp::ui
     // This is a button. It represents an object that can be clicked by the us-
     // er. It can also detect hovering. It is currently tied to one specific w-
     // indowing system though.
-    SCPGFFUNC class Button
+    class SCPGFFUNC  Button
     {
     public:
         // Create a button with the specified boundaries. I've set the default 

@@ -5,7 +5,7 @@
 
 namespace scp::graphics
 {
-    SCPGFFUNC struct VertexLayout
+    struct SCPGFFUNC  VertexLayout
     {
         enum class Type
         {

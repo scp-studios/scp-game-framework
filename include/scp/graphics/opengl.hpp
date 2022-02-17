@@ -5,19 +5,19 @@
 
 namespace scp::graphics
 {
-    SCPGFFUNC namespace opengl
+    namespace opengl
     {
-        SCPGFFUNC void enableContextDebugging();
+        void SCPGFFUNC enableContextDebugging();
         
-        SCPGFFUNC void enable2DBlending();
+        void SCPGFFUNC enable2DBlending();
         
-        SCPGFFUNC void setClearColor(float red, float green, float blue, float alpha);
+        void SCPGFFUNC setClearColor(float red, float green, float blue, float alpha);
         
-        SCPGFFUNC void clearColor();
+        void SCPGFFUNC clearColor();
         
-        SCPGFFUNC void clearColorAndDepth();
+        void SCPGFFUNC clearColorAndDepth();
         
-        SCPGFFUNC void clearAll();
+        void SCPGFFUNC clearAll();
     }
 }
 
