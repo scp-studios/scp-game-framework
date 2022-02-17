@@ -7,11 +7,13 @@
 *.dylib
 *.a
 *.lib
+/lib/*
 
 # Executables
 *.out
 *.exe
 *.app
+/bin/*
 
 # Visual Studio Clutters
 *.pdb
