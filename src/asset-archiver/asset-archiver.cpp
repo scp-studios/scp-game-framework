@@ -54,11 +54,19 @@ static std::vector<std::string> getFiles(std::string_view directory, bool recurs
     std::vector<std::string> files;
     for (const auto& file: stdfs::directory_iterator(directory))
     {
+        #ifdef _WIN32
+        files.push_back(file.path().string());
+        #else
         files.push_back(file.path());
+        #endif
         
         if (recursive && file.is_directory())
         {
+            #ifdef _WIN32
+            std::vector<std::string> subdirectoryFiles = getFiles(file.path().string(), recursive);
+            #else
             std::vector<std::string> subdirectoryFiles = getFiles(file.path().c_str(), recursive);
+            #endif
             files.insert(files.end(), subdirectoryFiles.begin(), subdirectoryFiles.end());
         }
     }
