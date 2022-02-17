@@ -4,3 +4,4 @@ target_link_libraries(
     scp-game-framework-core
     scp-game-framework-graphics
 )
+define_test_symbols("test-opengl-debug")

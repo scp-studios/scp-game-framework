@@ -6,3 +6,4 @@ target_link_libraries(
     scp-game-framework-graphics
     scp-game-framework-utils
 )
+define_test_symbols("test-opengl-element-buffer")

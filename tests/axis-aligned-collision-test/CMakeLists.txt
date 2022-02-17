@@ -7,3 +7,4 @@ target_link_libraries(
     "scp-game-framework-physics"
     "scp-game-framework-utils"
 )
+define_test_symbols("test-axis-aligned-collision")

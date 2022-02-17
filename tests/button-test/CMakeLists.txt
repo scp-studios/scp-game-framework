@@ -7,3 +7,4 @@ target_link_libraries(
     "scp-game-framework-ui"
     "scp-game-framework-utils"
 )
+define_test_symbols("test-button")
