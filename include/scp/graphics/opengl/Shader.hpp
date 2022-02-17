@@ -26,7 +26,7 @@ namespace scp
         // A simple shader class. It works with OpenGL. Mainly
         // Note: Might have to change the implementation later on, as this version
         // is rather simplistic.
-        class Shader
+        SCPGFFUNC class Shader
         {
         public:
             Shader() = default;

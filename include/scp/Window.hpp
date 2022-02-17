@@ -10,7 +10,7 @@
 
 namespace scp
 {
-    class Window
+    SCPGFFUNC class Window
     {
     public:
         // The input class is a friend because it needs to access the private

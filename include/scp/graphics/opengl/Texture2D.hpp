@@ -5,7 +5,7 @@
 
 namespace scp::graphics::opengl
 {
-    class Texture2D
+    SCPGFFUNC class Texture2D
     {
     public:
         Texture2D() = default;

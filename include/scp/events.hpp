@@ -5,9 +5,9 @@
 // structs because I don't know what kind of method an event object
 // would need.
 
-namespace scp::events
+SCPGFFUNC namespace scp::events
 {
-    struct KeyPressEvent
+    SCPGFFUNC struct KeyPressEvent
     {
         int m_key;
         int m_scancode;
@@ -23,7 +23,7 @@ namespace scp::events
     
     
     
-    struct MouseButtonEvent
+    SCPGFFUNC struct MouseButtonEvent
     {
         int m_button;
         int m_action;
@@ -38,7 +38,7 @@ namespace scp::events
     
     
     
-    struct MouseMoveEvent
+    SCPGFFUNC struct MouseMoveEvent
     {
         double m_x;
         double m_y;
@@ -52,7 +52,7 @@ namespace scp::events
     
     
     
-    struct MouseScrollEvent
+    SCPGFFUNC struct MouseScrollEvent
     {
         double m_xoffset;
         double m_yoffset;

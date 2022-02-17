@@ -11,7 +11,7 @@
 
 namespace scp
 {
-    class Scene
+    SCPGFFUNC class Scene
     {
     public:
         // The window has to be a friend class in order for it to pass events

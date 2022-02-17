@@ -1,6 +1,8 @@
 #ifndef A6A504A9_D986_437F_826D_C47BAB47380E
 #define A6A504A9_D986_437F_826D_C47BAB47380E
 
+#include "scp.hpp"
+
 namespace scp
 {
     // A simple input class meant for input polling.
@@ -10,13 +12,13 @@ namespace scp
     
     class Window;
     
-    struct MousePosition
+    SCPGFFUNC struct MousePosition
     {
         double x;
         double y;
     };
     
-    class Input
+    SCPGFFUNC class Input
     {
     public:
         // Deleted the constructors so that copies can't be made.

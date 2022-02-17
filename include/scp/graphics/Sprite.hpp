@@ -14,7 +14,7 @@ namespace scp::graphics
     //
     // Currently, it's only meant to be used for 2D rendering. That's because a
     // sprite is usually 2D.
-    struct Sprite
+    SCPGFFUNC struct Sprite
     {
         // This is the actual transformation matrix
         math::Matrix4<float> matrix;

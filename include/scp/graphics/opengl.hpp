@@ -1,21 +1,23 @@
 #ifndef F973E16E_C42F_400C_86EB_F395CA3B34F2
 #define F973E16E_C42F_400C_86EB_F395CA3B34F2
 
+#include <scp/scp.hpp>
+
 namespace scp::graphics
 {
-    namespace opengl
+    SCPGFFUNC namespace opengl
     {
-        void enableContextDebugging();
+        SCPGFFUNC void enableContextDebugging();
         
-        void enable2DBlending();
+        SCPGFFUNC void enable2DBlending();
         
-        void setClearColor(float red, float green, float blue, float alpha);
+        SCPGFFUNC void setClearColor(float red, float green, float blue, float alpha);
         
-        void clearColor();
+        SCPGFFUNC void clearColor();
         
-        void clearColorAndDepth();
+        SCPGFFUNC void clearColorAndDepth();
         
-        void clearAll();
+        SCPGFFUNC void clearAll();
     }
 }
 

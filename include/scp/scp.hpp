@@ -6,6 +6,8 @@
 #else
     #ifdef SCP_LINK_WINDOWS_DLL
         #define SCPGFFUNC __declspec(dllimport)
+    #else
+        #define SCPGFFUNC
     #endif
 #endif
 

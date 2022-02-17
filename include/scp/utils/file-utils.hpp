@@ -7,9 +7,9 @@
 
 namespace scp::utils
 {
-    namespace file_utils
+    SCPGFFUNC namespace file_utils
     {
-        std::string loadAsString(std::string_view path);
+        SCPGFFUNC std::string loadAsString(std::string_view path);
     }
 }
 

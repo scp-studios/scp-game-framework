@@ -5,7 +5,7 @@
 
 namespace scp::physics
 {
-    class AxisAlignedBoxCollider
+    SCPGFFUNC class AxisAlignedBoxCollider
     {
     public:
         AxisAlignedBoxCollider(

@@ -7,9 +7,9 @@ namespace scp::utils
 {
     namespace string_utils
     {
-        bool startsWith(std::string_view a, std::string_view b);
+        SCPGFFUNC bool startsWith(std::string_view a, std::string_view b);
         
-        std::vector<std::string> splitString(std::string_view host, char delimiter);
+        SCPGFFUNC std::vector<std::string> splitString(std::string_view host, char delimiter);
     }
 }
 
